@@ -9,4 +9,4 @@ public class GridBagMain
       gridBagFrame.setSize(600, 300); 
       gridBagFrame.setVisible(true); 
    } 
-} // end class GridBagDemo2
+} // end class GridBagMain

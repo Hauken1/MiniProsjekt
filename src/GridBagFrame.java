@@ -85,4 +85,4 @@ public class GridBagFrame extends JFrame
 	
 	}
 	 
-}
+} // end class GridBagFrame
