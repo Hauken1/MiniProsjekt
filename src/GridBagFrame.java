@@ -1,6 +1,10 @@
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -14,21 +18,22 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 
+
 public class GridBagFrame extends JFrame 
 {
 	
 	private final GridBagLayout layout; // layout of this frame
 	private final GridBagConstraints constraints; // layout's constraints
 	
-	// set up GUI
+	// sette opp GUI
 	public GridBagFrame()
 	{
-		super("GridBagLayout");
-		layout = new GridBagLayout(); //Initiate layout
+		super("GridBagLayout editor");
+		layout = new GridBagLayout(); //Inititialisere layout
 		setLayout(layout);
 		constraints = new GridBagConstraints(); // instantiate constraints
-	     
-		//Create GUI-Components (tables, toolbar, meny, m.m)
+		
+		//GUI-Komponenter (tables, toolbar, meny, m.m)
 		
 		//Table
 	    JTable table = new JTable(new TableModel());
@@ -36,32 +41,118 @@ public class GridBagFrame extends JFrame
 	    table.setFillsViewportHeight(true);
 	    JScrollPane scrollPane = new JScrollPane(table);
 	    
-	    //Menu
-	    JMenu Menu = new JMenu("File"); // create file menu
-	    Menu.setMnemonic('F'); // set mnemonic to F
+	    //Menyer
+	    JMenu filMenu = new JMenu("Fil"); // Lager fil meny
+	    filMenu.setMnemonic('F'); // set mnemonic to F
 	    
-	    // create Ny... menu item
-	    JMenuItem nyItem = new JMenuItem("Ny...");
+	    JMenu redigerMenu = new JMenu("Rediger"); //Lager rediger meny
+	    redigerMenu.setMnemonic('r');
+	    
+	    JMenu hjelpMenu = new JMenu("Hjelp"); //Lager rediger meny
+	    hjelpMenu.setMnemonic('H');
+	    
+	    //Lage "Ny" funksjon til fil meny
+	    JMenuItem nyItem = new JMenuItem("Ny"); //Lage ny menyitem
 	    nyItem.setMnemonic('A'); // set mnemonic to A
-	    Menu.add(nyItem); // add about item to file menu
+	    filMenu.add(nyItem); // legge til "NY" item til fil meny
+	  
+	    nyItem.addActionListener (
+	    	new ActionListener()
+	    	{
+	    		@Override
+	    		public void actionPerformed(ActionEvent event)
+	    		{
+	    		//TODO Funksjon for å lage ny fil
+	    		}
+	    	}
+	    );
+	    //Lage "Hent" funksjon til fil meny
+	    JMenuItem hentItem = new JMenuItem("Hent"); //Lage hent menyitem
+	    hentItem.setMnemonic('h');
+	    filMenu.add(hentItem);
+	    hentItem.addActionListener(
+	    	new ActionListener()
+	    	{
+	    		@Override
+	    		public void  actionPerformed(ActionEvent event)
+	    		{
+	    			//TODO Funksjon for hent fil
+	    		}
+	    	}	
+	    );
+	    //Lage "Lagre" funksjon til fil meny
+	    JMenuItem lagreItem = new JMenuItem("Lagre"); //Lage lagre menyitem
+	    lagreItem.setMnemonic('h');
+	    filMenu.add(lagreItem);
+	    lagreItem.addActionListener(
+	    	new ActionListener()
+	    	{
+	    		@Override
+	    		public void  actionPerformed(ActionEvent event)
+	    		{
+	    			//TODO Funksjon for hent fil
+	    		}
+	    	}	
+	    );
+	    //Lage "Lagre Som" funksjon til fil meny
+	    JMenuItem lagreSomItem = new JMenuItem("Lagre Som"); //Lage lagre som menyitem
+	    lagreSomItem.setMnemonic('h');
+	    filMenu.add(lagreSomItem);
+	    lagreSomItem.addActionListener(
+	    	new ActionListener()
+	    	{
+	    		@Override
+	    		public void  actionPerformed(ActionEvent event)
+	    		{
+	    			//TODO Funksjon for hent fil
+	    		}
+	    	}	
+	    );
+	    //Lage "Avslutt" funksjon til fil meny
+	    JMenuItem avsluttItem = new JMenuItem("Avslutt"); // lage avslutt item
+	    avsluttItem.setMnemonic('x'); // set mnemonic to x
+	    filMenu.add(avsluttItem); // legge til avslutt item til fil meny
+	    avsluttItem.addActionListener(
+	    	new ActionListener() // anonymous inner class
+	         {  
+	            // terminerer applikasjonen når bruker trykker avslutt
+	            @Override
+	            public void actionPerformed(ActionEvent event)
+	            {
+	               System.exit(0); // avslutter applikasjonen
+	            } 
+	         }
+	    ); 
 	    
+	    //Lager selve menybaren
+	    JMenuBar bar = new JMenuBar();
+	    setJMenuBar(bar);
+	    bar.add(filMenu);
+	    bar.add(redigerMenu);
+	    bar.add(hjelpMenu);
 	    
-	    
-	    addComponent(menu);
-	    //Scrollpane
-        constraints.weightx = 1;
-	    constraints.weighty = 1;  
+	    //Standard constraints TODO Sette det øverst til venstre
 	    constraints.fill = GridBagConstraints.BOTH;
 	    constraints.gridwidth = GridBagConstraints.REMAINDER;
-	    addComponent(scrollPane);
+	    constraints.anchor = GridBagConstraints.NORTHWEST;
+	    
+	    //Bar
+	    constraints.gridx = 0;
+	    constraints.gridy = 0;
+	    addComponent(bar);		//Legger meny til framen
+	    
+	    //Scrollpane
+	    constraints.gridx = 0;
+	    constraints.gridy = 1; 
+	    addComponent(scrollPane);	//Legger scrollpane til framen
 	     
-	} // end GridBagFrame constructor
+	} // Slutt GridBagFrame constructor
 	 
-	// add a component to the container
+	// Legg til komponent til kontaineren
 	private void addComponent(Component component) 
 	{
 		layout.setConstraints(component, constraints);
-	    add(component); // add component
+	    add(component); // Legge til Komponent
 	} 
 	
 	//Constructor for JTable
@@ -97,8 +188,5 @@ public class GridBagFrame extends JFrame
 			// TODO Kun for data
 			return null;
 		}
-	
-	
 	}
-	 
-} // end class GridBagFrame
+} // Slutt class GridBagFrame
