@@ -10,6 +10,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.AbstractTableModel;
 import java.awt.Dimension;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
 
 public class GridBagFrame extends JFrame 
 {
@@ -26,18 +29,31 @@ public class GridBagFrame extends JFrame
 		constraints = new GridBagConstraints(); // instantiate constraints
 	     
 		//Create GUI-Components (tables, toolbar, meny, m.m)
-	     JTable table = new JTable(new TableModel());
-	     table.setPreferredScrollableViewportSize(new Dimension(500,70));
-	     table.setFillsViewportHeight(true);
-	     
-	     JScrollPane scrollPane = new JScrollPane(table);
-	     
-	     //
-	     constraints.weightx = 1;
-	     constraints.weighty = 1;  
-	     constraints.fill = GridBagConstraints.BOTH;
-	     constraints.gridwidth = GridBagConstraints.REMAINDER;
-	     addComponent(scrollPane);
+		
+		//Table
+	    JTable table = new JTable(new TableModel());
+	    table.setPreferredScrollableViewportSize(new Dimension(500,70));
+	    table.setFillsViewportHeight(true);
+	    JScrollPane scrollPane = new JScrollPane(table);
+	    
+	    //Menu
+	    JMenu Menu = new JMenu("File"); // create file menu
+	    Menu.setMnemonic('F'); // set mnemonic to F
+	    
+	    // create Ny... menu item
+	    JMenuItem nyItem = new JMenuItem("Ny...");
+	    nyItem.setMnemonic('A'); // set mnemonic to A
+	    Menu.add(nyItem); // add about item to file menu
+	    
+	    
+	    
+	    addComponent(menu);
+	    //Scrollpane
+        constraints.weightx = 1;
+	    constraints.weighty = 1;  
+	    constraints.fill = GridBagConstraints.BOTH;
+	    constraints.gridwidth = GridBagConstraints.REMAINDER;
+	    addComponent(scrollPane);
 	     
 	} // end GridBagFrame constructor
 	 
