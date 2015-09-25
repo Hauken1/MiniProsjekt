@@ -1,31 +1,36 @@
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.GridBagConstraints;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.AbstractTableModel;
 import java.awt.Dimension;
+import java.awt.FlowLayout; //test
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JMenuBar;
 
 
 public class GridBagFrame extends JFrame 
 {
-	
 	private final GridBagLayout layout; // layout of this frame
 	private final GridBagConstraints constraints; // layout's constraints
 	
-	// sette opp GUI
+	// sette opp GUI:
 	public GridBagFrame()
 	{
 		super("GridBagLayout editor");
@@ -90,7 +95,7 @@ public class GridBagFrame extends JFrame
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			//TODO Funksjon for hent fil
+	    			//TODO Funksjon for å lagre
 	    		}
 	    	}	
 	    );
@@ -104,7 +109,7 @@ public class GridBagFrame extends JFrame
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			//TODO Funksjon for hent fil
+	    			//TODO Funksjon for å lagre som
 	    		}
 	    	}	
 	    );
@@ -136,14 +141,29 @@ public class GridBagFrame extends JFrame
 	    constraints.gridwidth = GridBagConstraints.REMAINDER;
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
 	    
-	    //Bar
+	    //Legger til menybaren
 	    constraints.gridx = 0;
 	    constraints.gridy = 0;
 	    addComponent(bar);		//Legger meny til framen
 	    
+	    //Lager ToolBaren TODO legge til ImageIcon med mouseevent. Trenger nok ikke bruke JPanel. Skulle bare teste
+	    JPanel buttonPanel = new JPanel();
+	    constraints.anchor = GridBagConstraints.NORTHWEST;
+	    constraints.gridwidth = GridBagConstraints.RELATIVE; 
+	    constraints.gridx = 0; 
+	    constraints.gridy = 1; 
+	    constraints.insets = new Insets(0,1,0,1);
+	    addComponent(buttonPanel);
+	 
+	    //TODO Bytt ut JLabel med ImageIcon.
+	    for (int i = 1; i <= 9; i++)
+	    {
+	    	buttonPanel.add(new JLabel("Test" + i));
+	    }
+	    
 	    //Scrollpane
 	    constraints.gridx = 0;
-	    constraints.gridy = 1; 
+	    constraints.gridy = 2; 
 	    addComponent(scrollPane);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
