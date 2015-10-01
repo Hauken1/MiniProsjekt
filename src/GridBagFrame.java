@@ -32,15 +32,9 @@ public class GridBagFrame extends JFrame
 	
 	// sette opp GUI:
 	public GridBagFrame()
-	{
-<<<<<<< HEAD
-		
+	{	
 		super("GridBagLayout");
-		layout = new GridBagLayout(); //Initiate layout
-=======
-		super("GridBagLayout editor");
 		layout = new GridBagLayout(); //Inititialisere layout
->>>>>>> master
 		setLayout(layout);
 		constraints = new GridBagConstraints(); // instantiate constraints
 		
@@ -172,25 +166,8 @@ public class GridBagFrame extends JFrame
 	    constraints.gridy = 2; 
 	    addComponent(scrollPane);	//Legger scrollpane til framen
 	     
-<<<<<<< HEAD
-		//Create GUI-Components (tables, toolbar, meny, m.m)
-	     JTable table = new JTable(new TableModel());
-	     table.setPreferredScrollableViewportSize(new Dimension(600,100));
-	     table.setFillsViewportHeight(true);
-	     
-	     JScrollPane scrollPane = new JScrollPane(table);
-	     
-	     //
-	     constraints.weightx = 1;
-	     constraints.weighty = 1;  
-	     constraints.fill = GridBagConstraints.BOTH;
-	     constraints.gridwidth = GridBagConstraints.REMAINDER;
-	     addComponent(scrollPane);
-	     
-	} // end GridBagFrame constructor
-=======
+
 	} // Slutt GridBagFrame constructor
->>>>>>> master
 	 
 	// Legg til komponent til kontaineren
 	private void addComponent(Component component) 
