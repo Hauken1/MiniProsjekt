@@ -20,6 +20,7 @@ public class GridBagFrame extends JFrame
 	// set up GUI
 	public GridBagFrame()
 	{
+		
 		super("GridBagLayout");
 		layout = new GridBagLayout(); //Initiate layout
 		setLayout(layout);
@@ -27,7 +28,7 @@ public class GridBagFrame extends JFrame
 	     
 		//Create GUI-Components (tables, toolbar, meny, m.m)
 	     JTable table = new JTable(new TableModel());
-	     table.setPreferredScrollableViewportSize(new Dimension(500,70));
+	     table.setPreferredScrollableViewportSize(new Dimension(600,100));
 	     table.setFillsViewportHeight(true);
 	     
 	     JScrollPane scrollPane = new JScrollPane(table);
