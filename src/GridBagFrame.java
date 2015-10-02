@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.JToolBar;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,13 +41,7 @@ public class GridBagFrame extends JFrame
 		
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
 		
-		//Table
-	    JTable table = new JTable(new TableModel());
-	    table.setPreferredScrollableViewportSize(new Dimension(500,70));
-	    table.setFillsViewportHeight(true);
-	    JScrollPane scrollPane = new JScrollPane(table);
-	    
-	    //Menyer
+		//Menyer
 	    JMenu filMenu = new JMenu("Fil"); // Lager fil meny
 	    filMenu.setMnemonic('F'); // set mnemonic to F
 	    
@@ -55,6 +50,12 @@ public class GridBagFrame extends JFrame
 	    
 	    JMenu hjelpMenu = new JMenu("Hjelp"); //Lager rediger meny
 	    hjelpMenu.setMnemonic('H');
+		
+		//Table
+	    JTable table = new JTable(new TableModel());
+	    table.setPreferredScrollableViewportSize(new Dimension(500,70));
+	    table.setFillsViewportHeight(true);
+	    JScrollPane scrollPane = new JScrollPane(table);
 	    
 	    //Lage "Ny" funksjon til fil meny
 	    JMenuItem nyItem = new JMenuItem("Ny"); //Lage ny menyitem
@@ -131,46 +132,47 @@ public class GridBagFrame extends JFrame
 	    
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
-	    setJMenuBar(bar);
+	    
+	    
 	    bar.add(filMenu);
 	    bar.add(redigerMenu);
 	    bar.add(hjelpMenu);
 	    
-	    //Standard constraints TODO Sette det øverst til venstre
-	    constraints.fill = GridBagConstraints.BOTH;
-	    constraints.gridwidth = GridBagConstraints.REMAINDER;
+	    constraints.weighty = 1;
+	    constraints.weightx = 1;
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
-	    
-	    //Legger til menybaren
-	    constraints.gridx = 0;
-	    constraints.gridy = 0;
-	    addComponent(bar);		//Legger meny til framen
+	    constraints.fill = GridBagConstraints.HORIZONTAL;
+	    addComponent(bar, 0, 0, 0, 1);		//Legger meny til framen
 	    
 	    //Lager ToolBaren TODO legge til ImageIcon med mouseevent. Trenger nok ikke bruke JPanel. Skulle bare teste
-	    JPanel buttonPanel = new JPanel();
+	    JToolBar buttonPanel = new JToolBar();
+	    //constraints.insets = new Insets(0,1,0,1);
+	    constraints.weighty = 1;
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
-	    constraints.gridwidth = GridBagConstraints.RELATIVE; 
-	    constraints.gridx = 0; 
-	    constraints.gridy = 1; 
-	    constraints.insets = new Insets(0,1,0,1);
-	    addComponent(buttonPanel);
+	    addComponent(buttonPanel, 0, 1, 0, 1);
 	 
 	    //TODO Bytt ut JLabel med ImageIcon.
-	    for (int i = 1; i <= 9; i++)
+	    for (int i = 1; i <= 5; i++)
 	    {
-	    	buttonPanel.add(new JLabel("Test" + i));
+	    	buttonPanel.add(new JButton("Test" + i));
+	    	//buttonPanel.add(new JButton("Test" + i));
 	    }
 	    
 	    //Scrollpane
-	    constraints.gridx = 0;
-	    constraints.gridy = 2; 
-	    addComponent(scrollPane);	//Legger scrollpane til framen
+	    
+	    constraints.fill = GridBagConstraints.BOTH;
+	    constraints.weighty = 100;
+	    addComponent(scrollPane, 0, 2, 0, 1);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
 	 
 	// Legg til komponent til kontaineren
-	private void addComponent(Component component) 
+	private void addComponent(Component component, int column, int row, int width, int height) 
 	{
+		constraints.gridx = column;
+		constraints.gridy = row;
+		constraints.gridwidth = width;
+		constraints.gridheight = height;
 		layout.setConstraints(component, constraints);
 	    add(component); // Legge til Komponent
 	} 
