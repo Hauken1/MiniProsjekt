@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.AbstractTableModel;
+
 import java.awt.Dimension;
 import java.awt.FlowLayout; //test
 import javax.swing.JMenu;
@@ -40,7 +41,8 @@ public class GridBagFrame extends JFrame
 		constraints = new GridBagConstraints(); // instantiate constraints
 		
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
-		
+	
+		/*
 		MenuItems menuItems = new MenuItems();
 	    
 		//Table
@@ -61,23 +63,38 @@ public class GridBagFrame extends JFrame
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    addComponent(bar, 0, 0, 0, 1);		//Legger meny til framen
-	    
+	    */
 	    //Lager ToolBaren TODO legge til ImageIcon med mouseevent. Trenger nok ikke bruke JPanel. Skulle bare teste
-	    JToolBar buttonPanel = new JToolBar();
+	    //JToolBar buttonPanel = new JToolBar();
+		Toolbar toolBar = new Toolbar(); 
+		JToolBar jtoolBar = new JToolBar(); 
+		
+		jtoolBar.add(toolBar.getNy());
+		jtoolBar.add(toolBar.getHent());
+		jtoolBar.add(toolBar.getLagre());
+		jtoolBar.add(toolBar.getPreview());
+		jtoolBar.add(toolBar.getGenererKode());
+		jtoolBar.add(toolBar.getNyRad());
+		jtoolBar.add(toolBar.getFlyttOpp());
+		jtoolBar.add(toolBar.getFlyttNed());
+		jtoolBar.add(toolBar.getHjelp());
+		
+		
+		
 	    //constraints.insets = new Insets(0,1,0,1);
 	    constraints.weighty = 1;
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
-	    addComponent(buttonPanel, 0, 1, 0, 1);
-	 
+	    addComponent(jtoolBar, 0, 1, 0, 1);
+	 /*
 	    //TODO Bytt ut JLabel med ImageIcon.
 	    for (int i = 1; i <= 5; i++)
 	    {
 	    	buttonPanel.add(new JButton("Test" + i));
 	    }
-	    
+	   */ 
 	    constraints.fill = GridBagConstraints.BOTH;
 	    constraints.weighty = 100;
-	    addComponent(scrollPane, 0, 2, 0, 1);	//Legger scrollpane til framen
+	  //  addComponent(scrollPane, 0, 2, 0, 1);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
 	
