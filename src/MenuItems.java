@@ -6,6 +6,7 @@ import javax.swing.JMenuItem;
 
 public class MenuItems {
 
+	private FileChooser file;
 	private JMenu fileMenu;
 	private JMenu redigerMenu;
 	private JMenu hjelpMenu;
@@ -24,6 +25,8 @@ public class MenuItems {
 	
 	public JMenu returnFileMenu() {
 		
+		file = new FileChooser();
+		
 		//Lage "Ny" funksjon til fil meny
 	    JMenuItem nyItem = new JMenuItem("Ny"); //Lage ny menyitem
 	    nyItem.setMnemonic('A'); // set mnemonic to A
@@ -35,6 +38,7 @@ public class MenuItems {
 	    		@Override
 	    		public void actionPerformed(ActionEvent event)
 	    		{
+	    			file.getFilePath();
 	    		//TODO Funksjon for å lage ny fil
 	    		}
 	    	}
@@ -64,6 +68,7 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
+	    			file.saveLayout();
 	    			//TODO Funksjon for å lagre
 	    		}
 	    	}	
