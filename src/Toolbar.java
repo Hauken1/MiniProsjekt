@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +23,18 @@ public class Toolbar extends JToolBar {
 	
     public void opprettToolbar () {
     	ny = new JButton("Ny" ,new ImageIcon(getClass().getResource("Resources/NEW.GIF")));
+    	ny.addActionListener(
+    			new ActionListener() // anonymous inner class
+   	         {  
+   	            // terminerer applikasjonen når bruker trykker avslutt
+   	            @Override
+   	            public void actionPerformed(ActionEvent event)
+   	            {
+   	  
+   	            } 
+   	         }
+   	    );
+    	
     	hent = new JButton("Hent", new ImageIcon(getClass().getResource("Resources/OPENDOC.GIF")));
     	lagre = new JButton("Lagre", new ImageIcon(getClass().getResource("Resources/SAVE.GIF")));
     	addSeparator();
@@ -27,6 +42,17 @@ public class Toolbar extends JToolBar {
     	genererKode = new JButton("Generer Kode", new ImageIcon(getClass().getResource("Resources/savejava.GIF")));
     	addSeparator();
     	nyRad = new JButton("Ny Rad", new ImageIcon(getClass().getResource("Resources/NEWROW.GIF")));
+    	nyRad.addActionListener(
+    			new ActionListener() // anonymous inner class
+      	         {  
+      	            // terminerer applikasjonen når bruker trykker avslutt
+      	            @Override
+      	            public void actionPerformed(ActionEvent event)
+      	            {
+      	               System.exit(0); // avslutter applikasjonen
+      	            } 
+      	         }
+      	    );
     	flyttOpp = new JButton("Flytt Opp", new ImageIcon(getClass().getResource("Resources/MoveRowUp.GIF")));
     	flyttNed = new JButton("Flytt Ned", new ImageIcon(getClass().getResource("Resources/MoveRowDown.GIF")));
     	addSeparator();
@@ -63,7 +89,7 @@ public class Toolbar extends JToolBar {
     }
     
     public JButton getFlyttNed() {
-    	return flyttOpp;
+    	return flyttNed;
     }
     
     public JButton getHjelp() {

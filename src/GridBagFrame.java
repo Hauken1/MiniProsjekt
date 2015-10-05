@@ -42,7 +42,7 @@ public class GridBagFrame extends JFrame
 		
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
 	
-		/*
+		
 		MenuItems menuItems = new MenuItems();
 	    
 		//Table
@@ -63,13 +63,13 @@ public class GridBagFrame extends JFrame
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    addComponent(bar, 0, 0, 0, 1);		//Legger meny til framen
-	    */
+	    
 	    //Lager ToolBaren TODO legge til ImageIcon med mouseevent. Trenger nok ikke bruke JPanel. Skulle bare teste
 	    //JToolBar buttonPanel = new JToolBar();
 		Toolbar toolBar = new Toolbar(); 
 		JToolBar jtoolBar = new JToolBar(); 
 		
-		jtoolBar.add(toolBar.getNy());
+		jtoolBar.add(toolBar.getNy()); //.addActionListener(actionListener)
 		jtoolBar.add(toolBar.getHent());
 		jtoolBar.add(toolBar.getLagre());
 		jtoolBar.add(toolBar.getPreview());
@@ -78,8 +78,6 @@ public class GridBagFrame extends JFrame
 		jtoolBar.add(toolBar.getFlyttOpp());
 		jtoolBar.add(toolBar.getFlyttNed());
 		jtoolBar.add(toolBar.getHjelp());
-		
-		
 		
 	    //constraints.insets = new Insets(0,1,0,1);
 	    constraints.weighty = 1;
@@ -94,7 +92,7 @@ public class GridBagFrame extends JFrame
 	   */ 
 	    constraints.fill = GridBagConstraints.BOTH;
 	    constraints.weighty = 100;
-	  //  addComponent(scrollPane, 0, 2, 0, 1);	//Legger scrollpane til framen
+	    addComponent(scrollPane, 0, 2, 0, 1);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
 	
@@ -108,5 +106,9 @@ public class GridBagFrame extends JFrame
 		layout.setConstraints(component, constraints);
 	    add(component); // Legge til Komponent
 	} 
+	
+	public void nyRad() {
+		
+	}
 	
 } // Slutt class GridBagFrame

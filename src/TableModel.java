@@ -32,4 +32,9 @@ class TableModel extends AbstractTableModel {
 			// TODO Kun for data
 			return null;
 		}
-	}
+		
+	/*	public void nyRad() {
+			componentJLabel nyRad = new KomponentJLabel(); 
+		}
+		*/
+}
