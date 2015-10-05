@@ -31,6 +31,10 @@ public class GridBagFrame extends JFrame
 {
 	private final GridBagLayout layout; // layout of this frame
 	private final GridBagConstraints constraints; // layout's constraints
+	private Toolbar toolBar = new Toolbar(); 
+	private TableModel tableModel = new TableModel(); 
+	private Table table;
+	JToolBar jtoolBar = new JToolBar(); 
 	
 	// sette opp GUI:
 	public GridBagFrame()
@@ -46,10 +50,11 @@ public class GridBagFrame extends JFrame
 		MenuItems menuItems = new MenuItems();
 	    
 		//Table
-	    JTable table = new JTable(new TableModel());
-	    table.setPreferredScrollableViewportSize(new Dimension(500,70));
-	    table.setFillsViewportHeight(true);
-	    JScrollPane scrollPane = new JScrollPane(table);    
+		table = new Table(tableModel);
+	  // JTable table = new JTable(new TableModel());
+	  //  table.setPreferredScrollableViewportSize(new Dimension(700,70));
+	   // table.setFillsViewportHeight(true);
+	 //   JScrollPane scrollPane = new JScrollPane(table);    
 	    
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
@@ -66,8 +71,8 @@ public class GridBagFrame extends JFrame
 	    
 	    //Lager ToolBaren TODO legge til ImageIcon med mouseevent. Trenger nok ikke bruke JPanel. Skulle bare teste
 	    //JToolBar buttonPanel = new JToolBar();
-		Toolbar toolBar = new Toolbar(); 
-		JToolBar jtoolBar = new JToolBar(); 
+		
+	
 		
 		jtoolBar.add(toolBar.getNy()); //.addActionListener(actionListener)
 		jtoolBar.add(toolBar.getHent());
@@ -79,20 +84,36 @@ public class GridBagFrame extends JFrame
 		jtoolBar.add(toolBar.getFlyttNed());
 		jtoolBar.add(toolBar.getHjelp());
 		
+	/*
+		toolBar.getNy().addActionListener(null);
+		toolBar.getHent().addActionListener(null);
+		toolBar.getLagre().addActionListener(null);
+		toolBar.getPreview().addActionListener(null);
+		toolBar.getGenererKode().addActionListener(null);
+		toolBar.getNyRad().addActionListener(
+				new ActionListener() // anonymous inner class
+     	         {  
+     	            // terminerer applikasjonen når bruker trykker avslutt
+     	            @Override
+     	            public void actionPerformed(ActionEvent event)
+     	            {
+     	            	
+     	            } 
+     	         }
+     	    );
+		toolBar.getFlyttOpp().addActionListener(null);
+		toolBar.getFlyttNed().addActionListener(null);
+		toolBar.getHjelp();
+		jtoolBar.add(toolBar);
+		*/
 	    //constraints.insets = new Insets(0,1,0,1);
 	    constraints.weighty = 1;
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
 	    addComponent(jtoolBar, 0, 1, 0, 1);
-	 /*
-	    //TODO Bytt ut JLabel med ImageIcon.
-	    for (int i = 1; i <= 5; i++)
-	    {
-	    	buttonPanel.add(new JButton("Test" + i));
-	    }
-	   */ 
+	 
 	    constraints.fill = GridBagConstraints.BOTH;
 	    constraints.weighty = 100;
-	    addComponent(scrollPane, 0, 2, 0, 1);	//Legger scrollpane til framen
+	    addComponent(table, 0, 2, 0, 1);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
 	
@@ -108,7 +129,9 @@ public class GridBagFrame extends JFrame
 	} 
 	
 	public void nyRad() {
-		
+		for(int i=0; i<2; i++) {
+		tableModel.setValueAt(table, i);
+		}
 	}
 	
 } // Slutt class GridBagFrame

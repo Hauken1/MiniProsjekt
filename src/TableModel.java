@@ -1,7 +1,11 @@
+import java.util.Vector;
+
+import javax.swing.JLabel;
 import javax.swing.table.AbstractTableModel;
 
 class TableModel extends AbstractTableModel {
-		
+	private JLabel label; 	
+	
 		private String[] columnNames = {
 				"Type",
 				"Variablenavn",
@@ -12,6 +16,8 @@ class TableModel extends AbstractTableModel {
 				"Kolonner",
 				"Utfylling",
 				"Forankring"};
+		
+		private Vector data = new Vector(); 
 		
 		public int getColumnCount() {
 			return columnNames.length;
@@ -24,17 +30,38 @@ class TableModel extends AbstractTableModel {
 		@Override
 		public int getRowCount() {
 			// TODO Kun for data
-			return 0;
+			return data.size(); 
 		}
 
 		@Override
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			// TODO Kun for data
-			return null;
+			return null; 
 		}
 		
-	/*	public void nyRad() {
-			componentJLabel nyRad = new KomponentJLabel(); 
+		public void setValueAt(Object object, int n) {
+			switch(n) {
+			case 0 : {
+				label = new JLabel(); 
+				data.setElementAt(label, n);
+				break;
+			}
+			case 1 : {
+				label = new JLabel(); 
+				data.setElementAt(label, n);
+			}
+			}
 		}
-		*/
+		
+		public void nyRad() {
+		}
+		
+		public void flyttOpp() {
+			
+			
+		}
+		
+		public void flyttNed() {
+			
+		}
 }
