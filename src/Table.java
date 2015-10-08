@@ -1,4 +1,5 @@
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -9,16 +10,16 @@ public class Table extends JPanel {
 	private JTable table; 
 	
 	public Table(TableModel tableModel){
-		
+		super(new GridLayout(1,0));
 		int n; 
 		table = new JTable(tableModel);
-		table.setPreferredScrollableViewportSize(new Dimension(700,70));
+		table.setPreferredScrollableViewportSize(new Dimension(700,100));
 		table.setFillsViewportHeight(true);
 		
 		for (n = 0; n < 3; ++n) {
             this.table.getColumnModel().getColumn(n).setMinWidth(100);
         }
-        for (n = 3; n < 6; ++n) {
+        for (n = 3; n < 8; ++n) {
             this.table.getColumnModel().getColumn(n).setMinWidth(60);
             this.table.getColumnModel().getColumn(n).setMaxWidth(60);
         }
