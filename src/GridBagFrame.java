@@ -47,16 +47,11 @@ public class GridBagFrame extends JFrame
 		constraints = new GridBagConstraints(); // instantiate constraints
 		
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
-		
 		MenuItems menuItems = new MenuItems();
 
 		//Table
 		table = new Table(tableModel);
-	  // JTable table = new JTable(new TableModel());
-	  // table.setPreferredScrollableViewportSize(new Dimension(700,70));
-	   //table.setFillsViewportHeight(true);
-	 //  JScrollPane scrollPane = new JScrollPane(table);    
-	    
+	  
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
 	    
@@ -120,7 +115,7 @@ public class GridBagFrame extends JFrame
 		ActionListener actionNyRad = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
-           		nyRad(); 
+           		tableModel.nyRad(); 
             }
         };
 		toolBar.getNyRad().addActionListener(actionNyRad);
@@ -128,8 +123,11 @@ public class GridBagFrame extends JFrame
 		ActionListener actionFlyttOpp = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
-        		
-           		JOptionPane.showMessageDialog(getParent(), "Test??");
+        		if (table.getSelectedRow() >= 0 && table.getSelectedRow() <= 8) {
+        			int n = table.getSelectedRow();
+        			tableModel.flyttOpp(n);
+        		}
+        		 
             }
         };		
 		toolBar.getFlyttOpp().addActionListener(actionFlyttOpp);
@@ -137,7 +135,10 @@ public class GridBagFrame extends JFrame
 		ActionListener actionFlyttNed = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
-           		JOptionPane.showMessageDialog(getParent(), "Test??");
+           		if (table.getSelectedRow() >= 0 && table.getSelectedRow() <= 8) {
+           			int n = table.getSelectedRow();
+               		tableModel.flyttNed(n);
+           		}
             }
         };
 		toolBar.getFlyttNed().addActionListener(actionFlyttNed);
@@ -153,18 +154,17 @@ public class GridBagFrame extends JFrame
         };
 		toolBar.getHjelp().addActionListener(actionGetHjelp);
 		
-		//jtoolBar.add(toolBar);
 	   // constraints.insets = new Insets(0,1,0,1);
-		//constraints.fill = GridBagConstraints.;
-	  //  constraints.weighty = 1;
-	   // constraints.anchor = GridBagConstraints.NORTHWEST;
-		//constraints.weightx = 0;
-		//constraints.weighty = 2;
+	
+		constraints.weightx = 0;
+		constraints.weighty = 1;
 	    addComponent(toolBar, 0, 1, 0, 0);
 	    
-	    constraints.fill = GridBagConstraints.HORIZONTAL;
+	  //constraints.fill = GridBagConstraints.HORIZONTAL;
 	    constraints.anchor = GridBagConstraints.LINE_START;
-	    constraints.weighty = 50;
+	    constraints.weighty = 100;
+	    constraints.weightx = 1;
+	  
 	    addComponent(table, 0, 2, 0, 0);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
@@ -179,11 +179,5 @@ public class GridBagFrame extends JFrame
 		layout.setConstraints(component, constraints);
 	    add(component); // Legge til Komponent
 	} 
-	
-	public void nyRad() {
-		tableModel.nyRad(); 
-		
-	}
-	
 	
 } // Slutt class GridBagFrame

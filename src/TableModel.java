@@ -34,17 +34,30 @@ class TableModel extends AbstractTableModel {
 		
 		@Override
 		public int getRowCount() {
-			// TODO Kun for data
 			return data.size(); 
 		}
 
 		@Override
-		public Object getValueAt(int rowIndex, int columnIndex) {
-			// TODO Kun for data
-			return null; 
-		}
+		public Object getValueAt(int row, int col) {
+            return ((Komponent) data.elementAt(row)).getKolonne(col);
+           
+        }
 		
-		public void setValueAt(Object object, int n) {
+		public Class getColumnClass(int n) {
+	        return getValueAt(0, n).getClass();
+	    }
+		
+		 public boolean isCellEditable(int n, int n2) {
+		        return true;
+		    }
+		
+		public void setValueAt(Object object, int n, int n2) {
+	
+			((Komponent)this.data.elementAt(n)).setKolonne(n2, object);
+			fireTableCellUpdated(n, n2);
+			
+			//data.setElementAt(object, n);
+			/*
 			switch(n) {
 			case 0 : {
 				//label = new JLabel().data.elementAt(n)); 
@@ -56,10 +69,12 @@ class TableModel extends AbstractTableModel {
 				data.setElementAt(object, n);
 			}
 			}
+			*/
+		
 		}
 		
 		public void nyRad() {
-			data.add(new KomponentJLabel("Ny" + data.size(), "", 1, 1, 1, 1));
+			data.add(new KomponentJLabel("Rad" + data.size(), "Temp", 1, 1, 1, 1));
 			fireTableRowsInserted(data.size() - 1 , data.size() - 1);
 		}
 		
@@ -68,13 +83,29 @@ class TableModel extends AbstractTableModel {
 			data.removeAllElements();
 			fireTableRowsDeleted(0,n);
 		}
-		public void flyttOpp() {
-			
+		
+		public void flyttOpp(int n) {
+			if (n > 0 && n < data.size()) {
+				Object temp = data.elementAt(n);	//Lager et temp object med dataen.
+				slettRad(n);
+				data.insertElementAt(temp, n - 1);	//Flytter raden opp
+				fireTableRowsInserted(n - 1, n -1);	//Oppdaterer
+			}
 			
 		}
 		
-		public void flyttNed() {
-			
+		public void flyttNed(int n) {
+			if ( n < data.size() - 1 ) {
+				Object temp = data.elementAt(n);	//Lager et temp object med dataen.
+				slettRad(n);
+				data.insertElementAt(temp, n + 1);	//Flytter raden ned
+				fireTableRowsInserted(n + 1, n + 1);	//Oppdaterer
+			}
+		}
+		
+		public void slettRad(int n) {
+			data.removeElementAt(n);
+			fireTableRowsDeleted(n,n);
 		}
 		
 		public void tilJavaKode(boolean n, File fil) {
