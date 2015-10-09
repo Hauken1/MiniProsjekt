@@ -15,7 +15,8 @@ public class FileChooserTest extends JFrame{
 		
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		
-		fileChooser.setSelectedFile();
+		
+		
 	}
 
 }

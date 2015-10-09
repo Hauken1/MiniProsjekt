@@ -5,3 +5,9 @@
 /Test/
 /CreateSequentialFile.class
 /ReadSequentialFile.class
+/HelpClassAccount.class
+/internationalization.class
+/Internationalization.class
+/MessagesBundle_en_US.properties
+/MessagesBundle_en_US2.properties
+/MessagesBundle_no_NO.properties
