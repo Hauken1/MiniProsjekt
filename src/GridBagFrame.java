@@ -31,6 +31,9 @@ public class GridBagFrame extends JFrame
 	private final GridBagLayout layout; // layout of this frame
 	private final GridBagConstraints constraints; // layout's constraints
 	
+	
+	private GridBagMain main;
+	
 	// sette opp GUI:
 	public GridBagFrame()
 	{
@@ -42,7 +45,7 @@ public class GridBagFrame extends JFrame
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
 		
 		MenuItems menuItems = new MenuItems();
-	    
+		
 		//Table
 	    JTable table = new JTable(new TableModel());
 	    table.setPreferredScrollableViewportSize(new Dimension(500,70));
