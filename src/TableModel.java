@@ -110,6 +110,5 @@ class TableModel extends AbstractTableModel {
 		
 		public void tilJavaKode(boolean n, File fil) {
 			
-		}
-		
+		}	
 }
