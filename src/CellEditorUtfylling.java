@@ -9,5 +9,4 @@ public class CellEditorUtfylling extends JComboBox {
 		}
 		setRenderer(new ComboBoxRendererUtfylling());
 	}
-	
 }
