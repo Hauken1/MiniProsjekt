@@ -6,8 +6,8 @@ public class GridBagMain
    { 
       GridBagFrame gridBagFrame = new GridBagFrame();  
       gridBagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      gridBagFrame.setSize(600, 300); 
+      gridBagFrame.setSize(800, 300); 
       gridBagFrame.setVisible(true); 
-      
+     
    } 
 } // end class GridBagMain
