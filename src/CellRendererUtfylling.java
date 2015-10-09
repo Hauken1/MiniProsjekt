@@ -13,10 +13,10 @@ public class CellRendererUtfylling extends JLabel implements TableCellRenderer {
 	
 	public CellRendererUtfylling() {
 		setOpaque(true); 
-		ingen = new ImageIcon(getClass().getResource("Resources/skaler_ingen.png"));
-		horisontalt = new ImageIcon(this.getClass().getResource("Resources/skaler_horisontalt.png"));
-	    vertikalt = new ImageIcon(this.getClass().getResource("Resources/skaler_vertikalt.png"));
-	    begge = new ImageIcon(this.getClass().getResource("Resources/skaler_begge.png"));
+		//ingen = new ImageIcon(getClass().getResource("Resources/skaler_ingen.png"));
+		//horisontalt = new ImageIcon(this.getClass().getResource("Resources/skaler_horisontalt.png"));
+	    //vertikalt = new ImageIcon(this.getClass().getResource("Resources/skaler_vertikalt.png"));
+	    //begge = new ImageIcon(this.getClass().getResource("Resources/skaler_begge.png"));
 	}
 	
 	/*
