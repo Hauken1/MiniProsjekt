@@ -23,6 +23,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout; //test
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JMenuBar;
 
@@ -32,8 +33,9 @@ public class GridBagFrame extends JFrame
 	private final GridBagLayout layout; // layout of this frame
 	private final GridBagConstraints constraints; // layout's constraints
 	private Toolbar toolBar = new Toolbar(); 
-	private TableModel tableModel = new TableModel(); 
 	private Table table;
+	private TableModel tableModel = new TableModel(); 
+	
 	JToolBar jtoolBar = new JToolBar(); 
 	
 	// sette opp GUI:
@@ -45,75 +47,125 @@ public class GridBagFrame extends JFrame
 		constraints = new GridBagConstraints(); // instantiate constraints
 		
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
-	
-		
 		MenuItems menuItems = new MenuItems();
-	    
+
 		//Table
 		table = new Table(tableModel);
-	  // JTable table = new JTable(new TableModel());
-	  //  table.setPreferredScrollableViewportSize(new Dimension(700,70));
-	   // table.setFillsViewportHeight(true);
-	 //   JScrollPane scrollPane = new JScrollPane(table);    
-	    
+	  
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
 	    
 	    bar.add(menuItems.returnFileMenu());
 	    bar.add(menuItems.returnRedigerMenu());
 	    bar.add(menuItems.returnHjelpMenu());
-	    
+	   
 	    constraints.weighty = 1;
 	    constraints.weightx = 1;
 	    constraints.anchor = GridBagConstraints.NORTHWEST;
 	    constraints.fill = GridBagConstraints.HORIZONTAL;
 	    addComponent(bar, 0, 0, 0, 1);		//Legger meny til framen
 	    
-	    //Lager ToolBaren TODO legge til ImageIcon med mouseevent. Trenger nok ikke bruke JPanel. Skulle bare teste
-	    //JToolBar buttonPanel = new JToolBar();
+	    //Lager ToolBaren TODO legge til mouseevent. 
+	    ActionListener actionNy = new ActionListener(){
+
+            public void actionPerformed(ActionEvent actionEvent) {
+            	tableModel.nyTabell(); 
+            }
+        };
+	    toolBar.getNy().addActionListener(actionNy);
+    	//Hente fil funksjonalitet		
+		ActionListener actionHent = new ActionListener(){
+
+            public void actionPerformed(ActionEvent actionEvent) {
+            	JOptionPane.showMessageDialog(getParent(), "Test??");
+            }
+        };
+		toolBar.getHent().addActionListener(actionHent);
+		//Lagre funksjonalitet
+		ActionListener actionLagre = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+           		JOptionPane.showMessageDialog(getParent(), "Test??");
+            }
+        };
+		toolBar.getLagre().addActionListener(actionLagre);
+		//Generer et preview av java kildekoden
+		ActionListener actionPreview = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+        		Thread thread = new Thread() {
+        			
+        			public void run() {
+        				tableModel.tilJavaKode(true, null);
+        			}
+        		};
+        		thread.start(); 
+            }
+        };
+		toolBar.getPreview().addActionListener(actionPreview);
+		//Genererer java kildekode
+		ActionListener actionGenerer = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+           		JOptionPane.showMessageDialog(getParent(), "Test??");
+            }
+        };
+		toolBar.getGenererKode().addActionListener(actionGenerer);
+		//Ny rad funksjonalitet
+		ActionListener actionNyRad = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+           		tableModel.nyRad(); 
+            }
+        };
+		toolBar.getNyRad().addActionListener(actionNyRad);
+		//Flytt rad opp funksjonalitet
+		ActionListener actionFlyttOpp = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+        		if (table.getSelectedRow() >= 0 && table.getSelectedRow() <= 8) {
+        			int n = table.getSelectedRow();
+        			tableModel.flyttOpp(n);
+        		}
+        		 
+            }
+        };		
+		toolBar.getFlyttOpp().addActionListener(actionFlyttOpp);
+		//Flytt rad ned funksjonalitet
+		ActionListener actionFlyttNed = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+           		if (table.getSelectedRow() >= 0 && table.getSelectedRow() <= 8) {
+           			int n = table.getSelectedRow();
+               		tableModel.flyttNed(n);
+           		}
+            }
+        };
+		toolBar.getFlyttNed().addActionListener(actionFlyttNed);
+		//Hjelp funksjonalitet
+		ActionListener actionGetHjelp = new ActionListener(){
+
+        	public void actionPerformed(ActionEvent actionEvent) {
+           		JOptionPane.showMessageDialog(getParent(), 
+           				"Velg preferanser, eller legg til nye rader via meny eller toolbar"
+           				+ "\nFyll"
+           				+ "\nFyll");
+            }
+        };
+		toolBar.getHjelp().addActionListener(actionGetHjelp);
 		
+	   // constraints.insets = new Insets(0,1,0,1);
 	
-		
-		jtoolBar.add(toolBar.getNy()); //.addActionListener(actionListener)
-		jtoolBar.add(toolBar.getHent());
-		jtoolBar.add(toolBar.getLagre());
-		jtoolBar.add(toolBar.getPreview());
-		jtoolBar.add(toolBar.getGenererKode());
-		jtoolBar.add(toolBar.getNyRad());
-		jtoolBar.add(toolBar.getFlyttOpp());
-		jtoolBar.add(toolBar.getFlyttNed());
-		jtoolBar.add(toolBar.getHjelp());
-		
-	/*
-		toolBar.getNy().addActionListener(null);
-		toolBar.getHent().addActionListener(null);
-		toolBar.getLagre().addActionListener(null);
-		toolBar.getPreview().addActionListener(null);
-		toolBar.getGenererKode().addActionListener(null);
-		toolBar.getNyRad().addActionListener(
-				new ActionListener() // anonymous inner class
-     	         {  
-     	            // terminerer applikasjonen når bruker trykker avslutt
-     	            @Override
-     	            public void actionPerformed(ActionEvent event)
-     	            {
-     	            	
-     	            } 
-     	         }
-     	    );
-		toolBar.getFlyttOpp().addActionListener(null);
-		toolBar.getFlyttNed().addActionListener(null);
-		toolBar.getHjelp();
-		jtoolBar.add(toolBar);
-		*/
-	    //constraints.insets = new Insets(0,1,0,1);
-	    constraints.weighty = 1;
-	    constraints.anchor = GridBagConstraints.NORTHWEST;
-	    addComponent(jtoolBar, 0, 1, 0, 1);
-	 
-	    constraints.fill = GridBagConstraints.BOTH;
+		constraints.weightx = 0;
+		constraints.weighty = 1;
+	    addComponent(toolBar, 0, 1, 0, 0);
+	    
+	  //constraints.fill = GridBagConstraints.HORIZONTAL;
+	    constraints.anchor = GridBagConstraints.LINE_START;
 	    constraints.weighty = 100;
-	    addComponent(table, 0, 2, 0, 1);	//Legger scrollpane til framen
+	    constraints.weightx = 1;
+	  
+	    addComponent(table, 0, 2, 0, 0);	//Legger scrollpane til framen
 	     
 	} // Slutt GridBagFrame constructor
 	
@@ -127,11 +179,5 @@ public class GridBagFrame extends JFrame
 		layout.setConstraints(component, constraints);
 	    add(component); // Legge til Komponent
 	} 
-	
-	public void nyRad() {
-		for(int i=0; i<2; i++) {
-		tableModel.setValueAt(table, i);
-		}
-	}
 	
 } // Slutt class GridBagFrame

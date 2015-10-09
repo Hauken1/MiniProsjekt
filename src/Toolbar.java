@@ -24,119 +24,36 @@ public class Toolbar extends JToolBar {
 	
     public void opprettToolbar () {
     	ny = new JButton("Ny" ,new ImageIcon(getClass().getResource("Resources/NEW.GIF")));
-    	ny.addActionListener(
-    			new ActionListener() // anonymous inner class
-   	         {  
-   	            // terminerer applikasjonen når bruker trykker avslutt
-   	            @Override
-   	            public void actionPerformed(ActionEvent event)
-   	            {
-   	  
-   	            } 
-   	         }
-   	    );
+    	this.add(ny);
     	
     	hent = new JButton("Hent", new ImageIcon(getClass().getResource("Resources/OPENDOC.GIF")));
-    	hent.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	               
-      	            } 
-      	         }
-      	    );
+    	this.add(hent);
+    	
     	lagre = new JButton("Lagre", new ImageIcon(getClass().getResource("Resources/SAVE.GIF")));
-    	lagre.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	               
-      	            } 
-      	         }
-      	    );
+    	add(lagre);
+    	
     	addSeparator();
     	preview = new JButton("Preview", new ImageIcon(getClass().getResource("Resources/ExecuteProject.GIF")));
-    	preview.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	               
-      	            } 
-      	         }
-      	    );
+    	add(preview);
+    	
     	genererKode = new JButton("Generer Kode", new ImageIcon(getClass().getResource("Resources/savejava.GIF")));
-    	genererKode.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	               
-      	            } 
-      	         }
-      	    );
+    	add(genererKode);
+    	
     	addSeparator();
     	nyRad = new JButton("Ny Rad", new ImageIcon(getClass().getResource("Resources/NEWROW.GIF")));
-    	nyRad.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	      
-      	            } 
-      	         }
-      	    );
+    	add(nyRad);
+    	
     	flyttOpp = new JButton("Flytt Opp", new ImageIcon(getClass().getResource("Resources/MoveRowUp.GIF")));
-    	flyttOpp.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	               
-      	            } 
-      	         }
-      	    );
+    	add(flyttOpp);
+    	
     	flyttNed = new JButton("Flytt Ned", new ImageIcon(getClass().getResource("Resources/MoveRowDown.GIF")));
-    	flyttNed.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	              
-      	            } 
-      	         }
-      	    );
+    	add(flyttNed);
+    	
     	addSeparator();
     	hjelp = new JButton("Hjelp", new ImageIcon(getClass().getResource("Resources/HELP.GIF")));
-    	hjelp.addActionListener(
-    			new ActionListener() // anonymous inner class
-      	         {  
-      	            // terminerer applikasjonen når bruker trykker avslutt
-      	            @Override
-      	            public void actionPerformed(ActionEvent event)
-      	            {
-      	            	JOptionPane.showMessageDialog(getParent(), "Ikke nødvendig??");
-      	            } 
-      	         }
-      	    );
-    	
+    	add(hjelp);
     }
+   
 	
     public JButton getNy() {
         return ny;
