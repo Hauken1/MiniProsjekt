@@ -1,6 +1,7 @@
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.io.Serializable;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JPanel;
@@ -8,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class Table extends JPanel {
+public class Table extends JPanel implements Serializable {
 
 	private JTable table; 
 	private final GridBagConstraints constraints;
@@ -37,7 +38,7 @@ public class Table extends JPanel {
              table.getColumnModel().getColumn(n).setMaxWidth(90);
              table.getColumnModel().getColumn(n).setResizable(false);
              if (n == 7) {
-            	 table.getColumnModel().getColumn(n).setCellRenderer(new CellRendererUtfylling());
+            	 table.getColumnModel().getColumn(n).setCellRenderer(new ComboBoxRendererUtfylling());
             	 table.getColumnModel().getColumn(n).setCellEditor(new DefaultCellEditor(new CellEditorUtfylling()));
              }
         }
