@@ -7,7 +7,7 @@ public class CellEditorUtfylling extends JComboBox {
 		for(int i = 0; i < Komponent.SKALERING.length; i++) {
 			addItem(new Integer(i));
 		}
-	//	setRenderer((ListCellRenderer) new JComboBox());
+		setRenderer(new ComboBoxRendererUtfylling());
 	}
 	
 }
