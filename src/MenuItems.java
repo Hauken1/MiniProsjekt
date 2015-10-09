@@ -6,6 +6,9 @@ import javax.swing.JMenuItem;
 
 public class MenuItems {
 
+	private Internationalization inter;
+	private CreateSequentialFile stream;
+	private FileChooser file;
 	private JMenu fileMenu;
 	private JMenu redigerMenu;
 	private JMenu hjelpMenu;
@@ -20,12 +23,16 @@ public class MenuItems {
 		
 		hjelpMenu = new JMenu("Hjelp");
 		hjelpMenu.setMnemonic('H');
+		
+		stream = new CreateSequentialFile();
+		file = new FileChooser();
+		inter = new Internationalization();
 	}
 	
 	public JMenu returnFileMenu() {
 		
 		//Lage "Ny" funksjon til fil meny
-	    JMenuItem nyItem = new JMenuItem("Ny"); //Lage ny menyitem
+	    JMenuItem nyItem = new JMenuItem(inter.returnMessage("new")); //Lage ny menyitem
 	    nyItem.setMnemonic('A'); // set mnemonic to A
 	    fileMenu.add(nyItem); // legge til "NY" item til fil meny
 	  
@@ -35,7 +42,16 @@ public class MenuItems {
 	    		@Override
 	    		public void actionPerformed(ActionEvent event)
 	    		{
-	    		//TODO Funksjon for å lage ny fil
+	    			//TODO lagg en popup menu som spør om man ønsker å lagre eller ikke
+	    			if(file.pathNotFound()) {
+	    				stream.openOutputFile(file.saveLayoutAtPath());
+		    			stream.closeFile();
+		    			file.setPathToNull();
+	    			} else {
+	    				stream.openOutputFile(file.saveLayout());
+		    			stream.closeFile();
+		    			file.setPathToNull();
+	    			}
 	    		}
 	    	}
 	    );
@@ -49,7 +65,15 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			//TODO Funksjon for hent fil
+	    			// Same here need a checker if the user wants to save
+	    			if(file.pathNotFound()) {
+	    				stream.openOutputFile(file.saveLayoutAtPath());
+		    			stream.closeFile();
+		    			file.setPathToNull();
+	    			}
+	    			
+	    			stream.openInputFile(file.loadLayoutPath());
+	    			stream.closeFile();
 	    		}
 	    	}	
 	    );
@@ -64,7 +88,8 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			//TODO Funksjon for å lagre
+	    			stream.openOutputFile(file.saveLayout());
+	    			stream.closeFile();
 	    		}
 	    	}	
 	    );
@@ -78,7 +103,8 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			//TODO Funksjon for å lagre som
+	    			stream.openOutputFile(file.saveLayoutAtPath());
+	    			stream.closeFile();
 	    		}
 	    	}	
 	    );
