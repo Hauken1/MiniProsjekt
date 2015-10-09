@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
+import java.util.Vector;
 import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,9 +33,9 @@ public class GridBagFrame extends JFrame
 {
 	private final GridBagLayout layout; // layout of this frame
 	private final GridBagConstraints constraints; // layout's constraints
-	private Toolbar toolBar = new Toolbar(); 
+	private Toolbar toolBar;
 	private Table table;
-	private TableModel tableModel = new TableModel(); 
+	private TableModel tableModel;
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
@@ -49,13 +50,19 @@ public class GridBagFrame extends JFrame
 		//GUI-Komponenter (tables, toolbar, meny, m.m)
 		MenuItems menuItems = new MenuItems();
 
+		//Tablemodel
+		tableModel = new TableModel();
+		
+		//Toolbar
+		toolBar = new Toolbar();
+		
 		//Table
 		table = new Table(tableModel);
 	  
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
 	    
-	    bar.add(menuItems.returnFileMenu());
+	    bar.add(menuItems.returnFileMenu(tableModel));
 	    bar.add(menuItems.returnRedigerMenu());
 	    bar.add(menuItems.returnHjelpMenu());
 	   

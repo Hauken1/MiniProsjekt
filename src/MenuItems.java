@@ -29,7 +29,7 @@ public class MenuItems {
 		inter = new Internationalization();
 	}
 	
-	public JMenu returnFileMenu() {
+	public JMenu returnFileMenu(TableModel tablemodel) {
 		
 		//Lage "Ny" funksjon til fil meny
 	    JMenuItem nyItem = new JMenuItem(inter.returnMessage("new")); //Lage ny menyitem
@@ -44,11 +44,11 @@ public class MenuItems {
 	    		{
 	    			//TODO lagg en popup menu som spør om man ønsker å lagre eller ikke
 	    			if(file.pathNotFound()) {
-	    				stream.openOutputFile(file.saveLayoutAtPath());
+	    				stream.openOutputFile(file.saveLayoutAtPath(), tablemodel);
 		    			stream.closeFile();
 		    			file.setPathToNull();
 	    			} else {
-	    				stream.openOutputFile(file.saveLayout());
+	    				stream.openOutputFile(file.saveLayout(), tablemodel);
 		    			stream.closeFile();
 		    			file.setPathToNull();
 	    			}
@@ -65,14 +65,9 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			// Same here need a checker if the user wants to save
-	    			if(file.pathNotFound()) {
-	    				stream.openOutputFile(file.saveLayoutAtPath());
-		    			stream.closeFile();
-		    			file.setPathToNull();
-	    			}
 	    			
-	    			stream.openInputFile(file.loadLayoutPath());
+	    			
+	    			stream.openInputFile(file.loadLayoutPath(), tablemodel);
 	    			stream.closeFile();
 	    		}
 	    	}	
@@ -88,7 +83,7 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			stream.openOutputFile(file.saveLayout());
+	    			stream.openOutputFile(file.saveLayout(), tablemodel);
 	    			stream.closeFile();
 	    		}
 	    	}	
@@ -103,7 +98,7 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			stream.openOutputFile(file.saveLayoutAtPath());
+	    			stream.openOutputFile(file.saveLayoutAtPath(), tablemodel);
 	    			stream.closeFile();
 	    		}
 	    	}	

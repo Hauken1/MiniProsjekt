@@ -21,8 +21,8 @@ class TableModel extends AbstractTableModel {
 				"Utfylling",
 				"Forankring"};
 		
-		private Vector<Object> data = new Vector<Object>(); 
-		private ArrayList<Object> list = new ArrayList<Object>();  
+		private Vector<Komponent> data = new Vector<Komponent>(); 
+		//private ArrayList<Object> list = new ArrayList<Object>();  
 		
 		public int getColumnCount() {
 			return columnNames.length;
@@ -86,7 +86,7 @@ class TableModel extends AbstractTableModel {
 		
 		public void flyttOpp(int n) {
 			if (n > 0 && n < data.size()) {
-				Object temp = data.elementAt(n);	//Lager et temp object med dataen.
+				Komponent temp = data.elementAt(n);	//Lager et temp object med dataen.
 				slettRad(n);
 				data.insertElementAt(temp, n - 1);	//Flytter raden opp
 				fireTableRowsInserted(n - 1, n -1);	//Oppdaterer
@@ -96,7 +96,7 @@ class TableModel extends AbstractTableModel {
 		
 		public void flyttNed(int n) {
 			if ( n < data.size() - 1 ) {
-				Object temp = data.elementAt(n);	//Lager et temp object med dataen.
+				Komponent temp = data.elementAt(n);	//Lager et temp object med dataen.
 				slettRad(n);
 				data.insertElementAt(temp, n + 1);	//Flytter raden ned
 				fireTableRowsInserted(n + 1, n + 1);	//Oppdaterer
@@ -110,5 +110,16 @@ class TableModel extends AbstractTableModel {
 		
 		public void tilJavaKode(boolean n, File fil) {
 			
-		}	
+		}
+		
+		public Object returnVector() {
+			return data;
+		}
+		
+		public void setVector(Vector<Komponent> newData) {
+			data = newData;
+			for (int i=0; i<=data.size(); i++) {
+				fireTableRowsInserted(i, i);
+			}
+		}
 }

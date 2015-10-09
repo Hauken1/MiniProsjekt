@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class Table extends JPanel implements Serializable {
+public class Table extends JPanel {
 
 	private JTable table; 
 	private final GridBagConstraints constraints;

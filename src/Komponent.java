@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Komponent {
+public class Komponent implements Serializable{
 
 	int rad;
     int kolonne;
