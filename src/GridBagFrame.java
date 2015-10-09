@@ -38,9 +38,6 @@ public class GridBagFrame extends JFrame
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
-	
-	private GridBagMain main;
-	
 	// sette opp GUI:
 	public GridBagFrame()
 	{
