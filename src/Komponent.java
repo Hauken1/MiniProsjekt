@@ -22,8 +22,8 @@ public class Komponent implements Serializable{
         kolonne = 0;
         kolonner = 1;
         rader = 1;
-        anker = "java.awt.GridBagConstraints.CENTER";
-        fyll = "java.awt.GridBagConstraints.NONE";
+        anker = "java.awt.GridBagConstraints.CENTER";	//Brukes for å sende riktig constraints til nytt program
+        fyll = "java.awt.GridBagConstraints.NONE";		// ---- | | -----. TODO må endres dynamisk eventuelt med return string funksjon
         forankring = 0;
         skalering = 0;
         variabelnavn = "";
@@ -103,18 +103,14 @@ public class Komponent implements Serializable{
                 break;
             }
             case 7: {
-            	
-                //this.skalering = (Integer)object;
-                //this.setUtfylling(SKALERING[this.skalering]);
+                skalering = (Integer)object;
                 break;
             }
             case 8: {
-                //this.forankring = (Integer)object;
-                //this.setAnker(FORANKRING[this.forankring]);
+                forankring = (Integer)object;
+                break;
             }
-        }
+        }   
     }
    
-    
-    
 }
