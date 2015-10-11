@@ -36,6 +36,9 @@ public class GridBagFrame extends JFrame
 	private Toolbar toolBar;
 	private Table table;
 	private TableModel tableModel;
+	private CreateSequentialFile stream;
+	private FileChooser file;
+	private CodeGenerator codeG;
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
@@ -58,6 +61,13 @@ public class GridBagFrame extends JFrame
 		
 		//Table
 		table = new Table(tableModel);
+		
+		//CodeGenerator
+		codeG = new CodeGenerator();
+		
+		//Fil klasser
+		stream = new CreateSequentialFile();
+		file = new FileChooser();
 	  
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
@@ -80,26 +90,40 @@ public class GridBagFrame extends JFrame
             }
         };
 	    toolBar.getNy().addActionListener(actionNy);
+	    
+	    
     	//Hente fil funksjonalitet		
 		ActionListener actionHent = new ActionListener(){
 
             public void actionPerformed(ActionEvent actionEvent) {
-            	JOptionPane.showMessageDialog(getParent(), "Test??");
+            	stream.openInputFile(file.loadLayoutPath(), tableModel);
+    			stream.closeFile();
             }
         };
 		toolBar.getHent().addActionListener(actionHent);
+		
+		
 		//Lagre funksjonalitet
 		ActionListener actionLagre = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
-           		JOptionPane.showMessageDialog(getParent(), "Test??");
+        		stream.openOutputFile(file.saveLayout(), tableModel);
+    			stream.closeFile();
             }
         };
 		toolBar.getLagre().addActionListener(actionLagre);
+		
+		
 		//Generer et preview av java kildekoden
 		ActionListener actionPreview = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
+        		
+        		codeG.openFile();
+           		codeG.javaPreviewToFile();;
+           		codeG.closeFile();
+        		
+        		/*
         		Thread thread = new Thread() {
         			
         			public void run() {
@@ -107,17 +131,26 @@ public class GridBagFrame extends JFrame
         			}
         		};
         		thread.start(); 
+        		*/
             }
         };
 		toolBar.getPreview().addActionListener(actionPreview);
+		
+		
 		//Genererer java kildekode
 		ActionListener actionGenerer = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
-           		JOptionPane.showMessageDialog(getParent(), "Test??");
+        		
+        		codeG.openFile();
+           		codeG.javaSourceCodeToFile();
+           		codeG.closeFile();
+           		
             }
         };
 		toolBar.getGenererKode().addActionListener(actionGenerer);
+		
+		
 		//Ny rad funksjonalitet
 		ActionListener actionNyRad = new ActionListener(){
 
@@ -126,6 +159,8 @@ public class GridBagFrame extends JFrame
             }
         };
 		toolBar.getNyRad().addActionListener(actionNyRad);
+		
+		
 		//Flytt rad opp funksjonalitet
 		ActionListener actionFlyttOpp = new ActionListener(){
 
@@ -138,6 +173,8 @@ public class GridBagFrame extends JFrame
             }
         };		
 		toolBar.getFlyttOpp().addActionListener(actionFlyttOpp);
+		
+		
 		//Flytt rad ned funksjonalitet
 		ActionListener actionFlyttNed = new ActionListener(){
 
@@ -149,6 +186,8 @@ public class GridBagFrame extends JFrame
             }
         };
 		toolBar.getFlyttNed().addActionListener(actionFlyttNed);
+		
+		
 		//Hjelp funksjonalitet
 		ActionListener actionGetHjelp = new ActionListener(){
 

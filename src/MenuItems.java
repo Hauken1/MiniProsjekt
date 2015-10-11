@@ -29,20 +29,28 @@ public class MenuItems {
 		inter = new Internationalization();
 	}
 	
+	/**
+	 * Makes the drop down for fileMenu(New, Load, Save, Save As, Quit).
+	 * With corresponding action listener and their call functions
+	 * @param tablemodel
+	 * @return fileMenu
+	 */
 	public JMenu returnFileMenu(TableModel tablemodel) {
 		
 		//Lage "Ny" funksjon til fil meny
 	    JMenuItem nyItem = new JMenuItem(inter.returnMessage("new")); //Lage ny menyitem
 	    nyItem.setMnemonic('A'); // set mnemonic to A
 	    fileMenu.add(nyItem); // legge til "NY" item til fil meny
-	  
+	 
 	    nyItem.addActionListener (
 	    	new ActionListener()
 	    	{
 	    		@Override
 	    		public void actionPerformed(ActionEvent event)
 	    		{
-	    			//TODO lagg en popup menu som spør om man ønsker å lagre eller ikke
+	    			tablemodel.nyTabell();
+	    			//Todo Fjern dette?
+	    			/*
 	    			if(file.pathNotFound()) {
 	    				stream.openOutputFile(file.saveLayoutAtPath(), tablemodel);
 		    			stream.closeFile();
@@ -52,9 +60,11 @@ public class MenuItems {
 		    			stream.closeFile();
 		    			file.setPathToNull();
 	    			}
+	    			*/
 	    		}
 	    	}
 	    );
+	    
 	    //Lage "Hent" funksjon til fil meny
 	    JMenuItem hentItem = new JMenuItem("Hent"); //Lage hent menyitem
 	    hentItem.setMnemonic('h');
@@ -65,8 +75,6 @@ public class MenuItems {
 	    		@Override
 	    		public void  actionPerformed(ActionEvent event)
 	    		{
-	    			
-	    			
 	    			stream.openInputFile(file.loadLayoutPath(), tablemodel);
 	    			stream.closeFile();
 	    		}

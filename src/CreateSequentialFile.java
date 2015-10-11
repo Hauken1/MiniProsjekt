@@ -13,13 +13,12 @@ public class CreateSequentialFile {
 
 	private ObjectInputStream input;
 	private ObjectOutputStream output;
-	private HelpClassAccount account;
 	
 	public CreateSequentialFile() {
 	}
 	
 	/**
-	 * Open file 
+	 * Open file to save data
 	 */
 	public void openOutputFile(Path path, TableModel tableModel) {
 		if(path != null) {
@@ -33,7 +32,7 @@ public class CreateSequentialFile {
 	}
 	
 	/**
-	 * Open file 
+	 * Open file from where to load data
 	 */
 	public void openInputFile(Path path, TableModel tableModel) {
 		if(path != null) {
@@ -50,12 +49,8 @@ public class CreateSequentialFile {
 	 * Saves an layout to file
 	 */
 	public void saveLayoutToFile(TableModel tableModel) {
-		//account = new HelpClassAccount();
 		try {
-			
-			//for (int i=0; i<=tableModel.returnDataSize(); i++) {
-			output.writeObject(tableModel.returnVector()); //Tries to write object to file (needs object to write)
-			//}
+			output.writeObject(tableModel.returnVector()); //Tries to write object to file
 		} catch (IOException e) {	
 			System.err.println("Error writing to file");
 		}
@@ -65,7 +60,6 @@ public class CreateSequentialFile {
 	 * Load a selected layout from file
 	 */
 	public void loadLayoutFromFile(TableModel tableModel) {
-		//For later use
 		try {
 				final Vector<Komponent> test = (Vector<Komponent>) input.readObject();
 				tableModel.setVector(test);

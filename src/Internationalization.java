@@ -13,8 +13,7 @@ public class Internationalization {
     	
     	language = new String("en");
         country = new String("US");
-
-        
+ 
 	    currentLocale = new Locale(language, country);
 	    //System.out.println("Language:" + currentLocale.getLanguage() + "\nCountry: " + currentLocale.getCountry());
 	    messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
