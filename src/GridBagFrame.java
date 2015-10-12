@@ -26,6 +26,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JMenuBar;
 
 
@@ -161,8 +162,6 @@ public class GridBagFrame extends JFrame
         };
 		toolBar.getHjelp().addActionListener(actionGetHjelp);
 		
-	   // constraints.insets = new Insets(0,1,0,1);
-	
 		constraints.weightx = 0;
 		constraints.weighty = 1;
 	    addComponent(toolBar, 0, 1, 0, 0);
@@ -172,7 +171,7 @@ public class GridBagFrame extends JFrame
 	    constraints.weighty = 100;
 	    constraints.weightx = 1;
 	  
-	    addComponent(table, 0, 2, 0, 0);	//Legger scrollpane til framen
+	    addComponent(table, 0, 2, 0, 0);	//Legger scrollpane med tabel til framen
 	     
 	} // Slutt GridBagFrame constructor
 	

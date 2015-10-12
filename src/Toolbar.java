@@ -24,10 +24,10 @@ public class Toolbar extends JToolBar {
 	
     public void opprettToolbar () {
     	ny = new JButton("Ny" , new ImageIcon(getClass().getResource("Resources/NEW.GIF")));
-    	this.add(ny);
+    	add(ny);
     	
     	hent = new JButton("Hent", new ImageIcon(getClass().getResource("Resources/OPENDOC.GIF")));
-    	this.add(hent);
+    	add(hent);
     	
     	lagre = new JButton("Lagre", new ImageIcon(getClass().getResource("Resources/SAVE.GIF")));
     	add(lagre);
