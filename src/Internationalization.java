@@ -1,30 +1,31 @@
 import java.util.*;
 
 public class Internationalization {
-
-	private String language;
-    private String country;
-    
-    private Locale currentLocale;
-    private ResourceBundle messages;
-
-    public Internationalization() {
-		// TODO Auto-generated constructor stub
-    	
-    	language = new String("en");
-        country = new String("US");
-
-        
-	    currentLocale = new Locale(language, country);
-	    //System.out.println("Language:" + currentLocale.getLanguage() + "\nCountry: " + currentLocale.getCountry());
-	    messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
-    }
+	
+	private ResourceBundle messages;
+	
+	public Internationalization() {
+	}
 
     /**
+     * Returns the choosen message
      * @param message
-     * @return string with correct language
+     * @return string with correct language or default set to us
      */
-    public String returnMessage(String message) {   
-	    return messages.getString(message);
+    public String returnMessage(String message) {   	
+    	Locale no = new Locale("no", "NO");
+    	Locale us = new Locale("en", "US");
+    	
+    	if(no.equals(Locale.getDefault())) {
+    		messages = ResourceBundle.getBundle("MessagesBundle", no);
+    		return messages.getString(message);
+    	}
+    	if(us.equals(Locale.getDefault())) {
+    		messages = ResourceBundle.getBundle("MessagesBundle", us);
+    		return messages.getString(message);
+    	}
+    	
+    	messages = ResourceBundle.getBundle("MessagesBundle", us);
+		return messages.getString(message);
     }
 }

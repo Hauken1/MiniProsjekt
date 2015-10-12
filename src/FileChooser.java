@@ -15,7 +15,7 @@ public class FileChooser extends JFrame {
 	
 	/**
 	 * Allow user to specify file
-	 * @return fileChooser.getSelectedFile().toPath();
+	 * @return selected path from dialog
 	 */
 	public Path loadLayoutPath() {
 		// configure dialog allowing selection of a file
@@ -32,19 +32,28 @@ public class FileChooser extends JFrame {
 	
 	/**
 	 * Allow user to specify where to save file
+	 * @return selected path from dialog
 	 */
 	public Path saveLayout() {
 		if(pathNotFound()) {
-			System.out.println("Ingen path funnet " + path);
-			fileChooser.showSaveDialog(this);
+			int result = fileChooser.showSaveDialog(this);
+			
+			//if user clicked Cancel button on dialog, return
+			if (result == JFileChooser.CANCEL_OPTION)
+				return null;
+			
 			return path = fileChooser.getSelectedFile().toPath();
 		}
 		return path;
 	}
 	
+	/**
+	 * Allow user to specify where to save file
+	 * @return selected path from dialog
+	 */
 	public Path saveLayoutAtPath() {
 		int result = fileChooser.showSaveDialog(this);
-		System.out.println("First result: " + result);
+		
 		//if user clicked Cancel button on dialog, return
 		if (result == JFileChooser.CANCEL_OPTION)
 			return null; 
@@ -52,15 +61,35 @@ public class FileChooser extends JFrame {
 		return path = fileChooser.getSelectedFile().toPath();
 	}
 	
+	/**
+	 * Checks if a path is already set
+	 * @return true or false
+	 */
 	public boolean pathNotFound() {
-		if (path != null) {
-			System.out.println("path ikke null: " + path);
+		if (path != null) 
 			return false;
-		}
+		
 		return true;
 	}
 	
+	/**
+	 * Resets the path to null
+	 */
 	public void setPathToNull() {
 		path = null;
+	}
+	
+	/**
+	 * Returns the name and not the file type
+	 * @return file name without .extension
+	 */
+	public String returnPathName() {
+		String t;
+		if(!pathNotFound()) {
+			t = fileChooser.getSelectedFile().getName();
+			System.out.println("File name: " + t);
+			return t.substring(0, t.indexOf("."));
+		}
+		return "temp";
 	}
 }
