@@ -13,7 +13,9 @@ public class Komponent implements Serializable{
     String fyll;
     String variabelnavn;
     String tekst;
-    public static String[] TYPE = new String[]{"JLabel", "JButton", "JTextField", "JTextArea", "JCheckBox", "JList", "JComboBox", "JSpinnerList", "JSpinnerNumber"};
+    
+    //Strenger for hvor lang de ulike ComboBoxene skal være:
+    public static String[] TYPE = new String[]{"JLabel", "JTextField", "JTextArea", "JButton"};
     public static String[] FORANKRING = new String[]{"CENTER", "NORTH", "NORTHEAST", "EAST", "SOUTHEAST", "SOUTH", "SOUTHWEST", "WEST", "NORTHWEST"};
     public static String[] SKALERING = new String[]{"NONE", "HORIZONTAL", "VERTICAL", "BOTH"};
     
@@ -22,13 +24,13 @@ public class Komponent implements Serializable{
         kolonne = 0;
         kolonner = 1;
         rader = 1;
-        anker = "java.awt.GridBagConstraints.CENTER";	//Brukes for å sende riktig constraints til nytt program
+        anker = "java.awt.GridBagConstraints.CENTER";	//Brukes for å sende riktig constraints til nytt program. Dette er default input.
         fyll = "java.awt.GridBagConstraints.NONE";		// ---- | | -----. TODO må endres dynamisk eventuelt med return string funksjon
         forankring = 0;
         skalering = 0;
         variabelnavn = "";
         tekst = "";
-        type = -1;
+        type = 0;
     }
     
     public Komponent(int n, int n2, int n3, int n4) {
@@ -75,7 +77,7 @@ public class Komponent implements Serializable{
     public void setKolonne(int n, Object object) {
         switch (n) {
             case 0: {
-                this.type = (Integer)object;
+                type = (Integer)object;
                 break;
             }
             case 1: {
