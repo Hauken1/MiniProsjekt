@@ -1,8 +1,11 @@
+import java.awt.Container;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
@@ -22,8 +25,7 @@ class TableModel extends AbstractTableModel {
 				inter.returnMessage("fill"),
 				inter.returnMessage("anchor")};
 		
-		private Vector<Komponent> data = new Vector<Komponent>(); 
-		//private ArrayList<Object> list = new ArrayList<Object>();  
+		private Vector<Komponent> data = new Vector<Komponent>();   
 		
 		public int getColumnCount() {
 			return columnNames.length;
@@ -56,22 +58,6 @@ class TableModel extends AbstractTableModel {
 	
 			((Komponent)this.data.elementAt(n)).setKolonne(n2, object);
 			fireTableCellUpdated(n, n2);
-			
-			//data.setElementAt(object, n);
-			/*
-			switch(n) {
-			case 0 : {
-				//label = new JLabel().data.elementAt(n)); 
-				data.setElementAt(object, n);
-				break;
-			}
-			case 1 : {
-				label = new JLabel(); 
-				data.setElementAt(object, n);
-			}
-			}
-			*/
-		
 		}
 		
 		public void nyRad() {
@@ -92,7 +78,6 @@ class TableModel extends AbstractTableModel {
 				data.insertElementAt(temp, n - 1);	//Flytter raden opp
 				fireTableRowsInserted(n - 1, n -1);	//Oppdaterer
 			}
-			
 		}
 		
 		public void flyttNed(int n) {
@@ -123,4 +108,10 @@ class TableModel extends AbstractTableModel {
 				fireTableRowsInserted(i, i);
 			}
 		}
+		
+		public void popupEditor(Container editor, int n) {
+			 
+			
+		}
+		
 }

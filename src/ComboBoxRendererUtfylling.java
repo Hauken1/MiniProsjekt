@@ -5,9 +5,10 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.ListCellRenderer;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
-public class ComboBoxRendererUtfylling extends JLabel implements ListCellRenderer, TableCellRenderer  {
+public class ComboBoxRendererUtfylling extends DefaultTableCellRenderer implements ListCellRenderer, TableCellRenderer  {
 
 	static ImageIcon ingen;
     static ImageIcon horisontalt;
@@ -22,42 +23,47 @@ public class ComboBoxRendererUtfylling extends JLabel implements ListCellRendere
         begge = new ImageIcon(this.getClass().getResource("Resources/skaler_begge.png"));
     }
     
-	 public Component getListCellRendererComponent(JList jList, Object object, int n, boolean bl, boolean bl2) {
+	 public Component getListCellRendererComponent(JList list, Object value, int n, boolean bl, boolean bl2) {
 	        if (bl) {
-	            this.setBackground(jList.getSelectionBackground());
+	            setBackground(list.getSelectionBackground());
 	        } else {
-	            this.setBackground(jList.getBackground());
+	            setBackground(list.getBackground());
 	        }
-	        if ((Integer)object == 0) {
+	        if ((Integer)value == 0) {
 	            setIcon(ingen);
-	        } else if ((Integer)object == 1) {
+	        } else if ((Integer)value == 1) {
 	            setIcon(horisontalt);
-	        } else if ((Integer)object == 2) {
+	        } else if ((Integer)value == 2) {
 	            setIcon(vertikalt);
-	        } else if ((Integer)object == 3) {
+	        } else if ((Integer)value == 3) {
 	            setIcon(begge);
 	        }
+	        
 	        setSize(100, 20);
 	        return this;
 	    }
 	 
-	 public Component getTableCellRendererComponent(JTable jTable, Object object, boolean bl, boolean bl2, int n, int n2) {
-	        if (bl) {
-	            this.setBackground(jTable.getSelectionBackground());
-	        } else {
-	            this.setBackground(jTable.getBackground());
+	 public Component getTableCellRendererComponent(JTable table, Object value, boolean b1, boolean b2, int row, int col) {
+		
+		 setOpaque(true);
+		 
+		 if (b1 ) {
+			 setBackground(table.getSelectionBackground());
+		 } else {
+			 setBackground(table.getBackground());
+		 }
+		 
+		    if ((Integer)value == 0) {
+	            setIcon(ingen);
+	        } else if ((Integer)value == 1) {
+	            setIcon(horisontalt);
+	        } else if ((Integer)value == 2) {
+	            setIcon(vertikalt);
+	        } else if ((Integer)value == 3) {
+	            setIcon(begge);
 	        }
-	        if ((Integer)object == 0) {
-	            this.setIcon(ingen);
-	        } else if ((Integer)object == 1) {
-	            this.setIcon(horisontalt);
-	        } else if ((Integer)object == 2) {
-	            this.setIcon(vertikalt);
-	        } else if ((Integer)object == 3) {
-	            this.setIcon(begge);
-	        }
-	        setSize(100,20);
-	        return this; 
+		    
+		return this; 
 	        }
 
 }
