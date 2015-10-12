@@ -68,6 +68,12 @@ public class Komponent implements Serializable{
             case 8: {
                 return new Integer(forankring);
             }
+            case 9: {
+            	return new Integer(anker);
+            }
+            case 10: {
+            	return new Integer(fyll);
+            }
         }
         return null;
     }

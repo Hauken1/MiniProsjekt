@@ -39,6 +39,7 @@ public class GridBagFrame extends JFrame
 	private CreateSequentialFile stream;
 	private FileChooser file;
 	private CodeGenerator codeG;
+	private Internationalization inter;
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
@@ -68,12 +69,13 @@ public class GridBagFrame extends JFrame
 		//Fil klasser
 		stream = new CreateSequentialFile();
 		file = new FileChooser();
+		inter = new Internationalization();
 	  
 	    //Lager selve menybaren
 	    JMenuBar bar = new JMenuBar();
 	    
 	    bar.add(menuItems.returnFileMenu(tableModel));
-	    bar.add(menuItems.returnRedigerMenu());
+	    bar.add(menuItems.returnRedigerMenu(tableModel));
 	    bar.add(menuItems.returnHjelpMenu());
 	   
 	    constraints.weighty = 1;
@@ -119,8 +121,7 @@ public class GridBagFrame extends JFrame
 
         	public void actionPerformed(ActionEvent actionEvent) {
         		
-        		codeG.openFile();
-           		codeG.javaPreviewToFile();;
+        		codeG.openPreviewFile(tableModel);
            		codeG.closeFile();
         		
         		/*
@@ -142,8 +143,7 @@ public class GridBagFrame extends JFrame
 
         	public void actionPerformed(ActionEvent actionEvent) {
         		
-        		codeG.openFile();
-           		codeG.javaSourceCodeToFile();
+        		codeG.openSourceFile(tableModel);
            		codeG.closeFile();
            		
             }
@@ -192,10 +192,7 @@ public class GridBagFrame extends JFrame
 		ActionListener actionGetHjelp = new ActionListener(){
 
         	public void actionPerformed(ActionEvent actionEvent) {
-           		JOptionPane.showMessageDialog(getParent(), 
-           				"Velg preferanser, eller legg til nye rader via meny eller toolbar"
-           				+ "\nFyll"
-           				+ "\nFyll");
+           		JOptionPane.showMessageDialog(getParent(), inter.returnMessage("helpText"));
             }
         };
 		toolBar.getHjelp().addActionListener(actionGetHjelp);

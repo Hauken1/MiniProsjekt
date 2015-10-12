@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class MenuItems {
 
@@ -15,18 +16,18 @@ public class MenuItems {
 	
 	public MenuItems() {
 		
-		fileMenu = new JMenu("Fil");
-		fileMenu.setMnemonic('F');
-		
-		redigerMenu = new JMenu("Rediger");
-		redigerMenu.setMnemonic('r');
-		
-		hjelpMenu = new JMenu("Hjelp");
-		hjelpMenu.setMnemonic('H');
-		
 		stream = new CreateSequentialFile();
 		file = new FileChooser();
 		inter = new Internationalization();
+		
+		fileMenu = new JMenu(inter.returnMessage("file"));
+		fileMenu.setMnemonic('F');
+		
+		redigerMenu = new JMenu(inter.returnMessage("edit"));
+		redigerMenu.setMnemonic('r');
+		
+		hjelpMenu = new JMenu(inter.returnMessage("help"));
+		hjelpMenu.setMnemonic('H');
 	}
 	
 	/**
@@ -66,7 +67,7 @@ public class MenuItems {
 	    );
 	    
 	    //Lage "Hent" funksjon til fil meny
-	    JMenuItem hentItem = new JMenuItem("Hent"); //Lage hent menyitem
+	    JMenuItem hentItem = new JMenuItem(inter.returnMessage("load")); //Lage hent menyitem
 	    hentItem.setMnemonic('h');
 	    fileMenu.add(hentItem);
 	    hentItem.addActionListener(
@@ -82,7 +83,7 @@ public class MenuItems {
 	    );
 	    
 	    //Lage "Lagre" funksjon til fil meny
-	    JMenuItem lagreItem = new JMenuItem("Lagre"); //Lage lagre menyitem
+	    JMenuItem lagreItem = new JMenuItem(inter.returnMessage("save")); //Lage lagre menyitem
 	    lagreItem.setMnemonic('h');
 	    fileMenu.add(lagreItem);
 	    lagreItem.addActionListener(
@@ -97,7 +98,7 @@ public class MenuItems {
 	    	}	
 	    );
 	    //Lage "Lagre Som" funksjon til fil meny
-	    JMenuItem lagreSomItem = new JMenuItem("Lagre Som"); //Lage lagre som menyitem
+	    JMenuItem lagreSomItem = new JMenuItem(inter.returnMessage("saveAs")); //Lage lagre som menyitem
 	    lagreSomItem.setMnemonic('h');
 	    fileMenu.add(lagreSomItem);
 	    lagreSomItem.addActionListener(
@@ -112,7 +113,7 @@ public class MenuItems {
 	    	}	
 	    );
 	    //Lage "Avslutt" funksjon til fil meny
-	    JMenuItem avsluttItem = new JMenuItem("Avslutt"); // lage avslutt item
+	    JMenuItem avsluttItem = new JMenuItem(inter.returnMessage("quit")); // lage avslutt item
 	    avsluttItem.setMnemonic('x'); // set mnemonic to x
 	    fileMenu.add(avsluttItem); // legge til avslutt item til fil meny
 	    avsluttItem.addActionListener(
@@ -131,7 +132,27 @@ public class MenuItems {
 		return fileMenu;
 	}
 	
-	public JMenu returnRedigerMenu() {
+	/**
+	 * Makes the drop down for fileMenu(new row).
+	 * With corresponding action listener and their call functions
+	 * @param tablemodel object
+	 * @return redigerMenu
+	 */
+	public JMenu returnRedigerMenu(TableModel tablemodel) {
+		//Lage "ny tabel" funksjon til fil meny
+	    JMenuItem nytabellItem = new JMenuItem(inter.returnMessage("newRow")); // lage avslutt item
+	    nytabellItem.setMnemonic('n'); // set mnemonic to x
+	    redigerMenu.add(nytabellItem);
+	    nytabellItem.addActionListener(
+	    	new ActionListener() // anonymous inner class
+	         {
+	            @Override
+	            public void actionPerformed(ActionEvent event)
+	            {
+	               tablemodel.nyRad();
+	            } 
+	         }
+	    );
 		return redigerMenu;
 	}
 	

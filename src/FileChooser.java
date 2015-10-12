@@ -78,4 +78,18 @@ public class FileChooser extends JFrame {
 	public void setPathToNull() {
 		path = null;
 	}
+	
+	/**
+	 * Returns the name and not the file type
+	 * @return file name without .extension
+	 */
+	public String returnPathName() {
+		String t;
+		if(!pathNotFound()) {
+			t = fileChooser.getSelectedFile().getName();
+			System.out.println("File name: " + t);
+			return t.substring(0, t.indexOf("."));
+		}
+		return "temp";
+	}
 }

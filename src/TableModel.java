@@ -8,18 +8,19 @@ import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
 class TableModel extends AbstractTableModel {
-	private JLabel label; 	
+	private JLabel label;
+	private Internationalization inter = new Internationalization();
 	
 		private String[] columnNames = {
-				"Type",
-				"Variablenavn",
-				"Tekst",
-				"Rad",
-				"Kolonne",
-				"Rader",
-				"Kolonner",
-				"Utfylling",
-				"Forankring"};
+				inter.returnMessage("type"),
+				inter.returnMessage("variableName"),
+				inter.returnMessage("text"),
+				inter.returnMessage("row"),
+				inter.returnMessage("column"),
+				inter.returnMessage("rows"),
+				inter.returnMessage("columns"),
+				inter.returnMessage("fill"),
+				inter.returnMessage("anchor")};
 		
 		private Vector<Komponent> data = new Vector<Komponent>(); 
 		//private ArrayList<Object> list = new ArrayList<Object>();  
