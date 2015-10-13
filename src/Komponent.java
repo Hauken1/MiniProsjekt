@@ -9,6 +9,10 @@ public class Komponent implements Serializable{
     int forankring;
     int skalering;
     int type;
+    int textRader;
+    int textKolonner;
+    int textBredde;
+    int textHoyde;
     String anker;
     String fyll;
     String variabelnavn;
@@ -31,6 +35,11 @@ public class Komponent implements Serializable{
         variabelnavn = "";
         tekst = "";
         type = 0;
+        textRader = 0;
+        textKolonner= 0;
+        textBredde= 0;
+        textHoyde = 0;
+        
     }
     
     public Komponent(int n, int n2, int n3, int n4) {
@@ -119,6 +128,14 @@ public class Komponent implements Serializable{
                 break;
             }
         }   
+    }
+    
+    public void egenskapsEditor(int n1, int n2, int n3, int n4) {
+    	textRader = n1;
+    	textKolonner = n2; 
+    	textHoyde = n3; 
+    	textBredde = n4;
+    
     }
    
 }
