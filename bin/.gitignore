@@ -20,7 +20,6 @@
 /GridBagMain.class
 /Internationalization.class
 /Komponent.class
-/KomponentJLabel.class
 /MenuItems$1.class
 /MenuItems$2.class
 /MenuItems$3.class
@@ -30,6 +29,7 @@
 /MenuItems.class
 /MessagesBundle_en_US.properties
 /MessagesBundle_no_NO.properties
+/Resources/
 /Table$1.class
 /Table$2.class
 /Table$PopupMouseListener.class
@@ -37,4 +37,3 @@
 /TableModel.class
 /Test/
 /Toolbar.class
-/Resources/
