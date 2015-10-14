@@ -61,7 +61,7 @@ class TableModel extends AbstractTableModel {
 		}
 		
 		public void nyRad() {
-			data.add(new KomponentJLabel("Rad " + data.size(), "Temp", 1, 1, 1, 1));
+			data.add(new KomponentJLabel("Rad" + data.size(), "Temp", 1, 1, 1, 1));
 			fireTableRowsInserted(data.size() - 1 , data.size() - 1);
 		}
 		

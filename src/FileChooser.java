@@ -4,11 +4,18 @@ import java.nio.file.Path;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+/**
+ * Takes care of opening the dialog menu for the user to pick a file to save or load too.
+ * Also resets the path or finds the name of the file.
+ */
 public class FileChooser extends JFrame {
 
 	private JFileChooser fileChooser;
 	private Path path;
 	
+	/**
+	 * Initialize JFilChooser 
+	 */
 	public FileChooser() {
 		fileChooser = new JFileChooser();
 	}
@@ -87,7 +94,6 @@ public class FileChooser extends JFrame {
 		String t;
 		if(!pathNotFound()) {
 			t = fileChooser.getSelectedFile().getName();
-			System.out.println("File name: " + t);
 			return t.substring(0, t.indexOf("."));
 		}
 		return "temp";

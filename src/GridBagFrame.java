@@ -29,7 +29,11 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JMenuBar;
 
-
+/**
+ * Class that creates the layout that handles most of the GUI on the screen.
+ * Sets the constraints on the top bar, toolbar and table
+ * and adds them to the layout
+ */
 public class GridBagFrame extends JFrame 
 {
 	private final GridBagLayout layout; // layout of this frame
@@ -44,7 +48,14 @@ public class GridBagFrame extends JFrame
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
-	// sette opp GUI:
+	/*
+	 * Constructor that gets called in the Main function. Creates the layout
+	 * Initializes class calls
+	 * Set constraints on GUI bar, toolbar and table.
+	 * Adds the bar, toolbar and table to the layout
+	 * Sets the action listener for the toolbar with it's
+	 * responding function call.
+	 */
 	public GridBagFrame()
 	{
 		super("GridBagLayout editor");
@@ -211,7 +222,14 @@ public class GridBagFrame extends JFrame
 	     
 	} // Slutt GridBagFrame constructor
 	
-	// Legg til komponent til kontaineren
+	/**
+	 * Add the given component with it's constraints to the layout.
+	 * @param component
+	 * @param column
+	 * @param row
+	 * @param width
+	 * @param height
+	 */
 	private void addComponent(Component component, int column, int row, int width, int height) 
 	{
 		constraints.gridx = column;

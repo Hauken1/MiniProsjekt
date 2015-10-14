@@ -1,5 +1,9 @@
 import java.util.*;
 
+/**
+ * Class for finding the computer language and country so the correct
+ * language will be displayed to the user.
+ */
 public class Internationalization {
 	
 	private ResourceBundle messages;
@@ -10,7 +14,7 @@ public class Internationalization {
     /**
      * Returns the choosen message
      * @param message
-     * @return string with correct language or default set to us
+     * @return string with correct language or default set to Locale "us"
      */
     public String returnMessage(String message) {   	
     	Locale no = new Locale("no", "NO");

@@ -5,6 +5,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+/**
+ * Creates the top bar with file/edit/help drop downs.
+ */
 public class MenuItems {
 
 	private Internationalization inter;
@@ -14,6 +17,9 @@ public class MenuItems {
 	private JMenu redigerMenu;
 	private JMenu hjelpMenu;
 	
+	/**
+	 * Initializes other class calls and the drop down bars
+	 */
 	public MenuItems() {
 		
 		stream = new CreateSequentialFile();
@@ -156,6 +162,10 @@ public class MenuItems {
 		return redigerMenu;
 	}
 	
+	/**
+	 * Makes the drop down for hjelpMenu
+	 * @return hjelpMenu
+	 */
 	public JMenu returnHjelpMenu() {
 		return hjelpMenu;
 	}

@@ -1,7 +1,14 @@
 import javax.swing.JFrame;
 
+/**
+ * Main class that starts the program calls.
+ */
 public class GridBagMain
 { 
+	/**
+	 * Calls the main fram object and sets its window properties.
+	 * @param args
+	 */
    public static void main(String[] args)
    { 
       GridBagFrame gridBagFrame = new GridBagFrame();  
