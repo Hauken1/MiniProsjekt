@@ -57,18 +57,6 @@ public class MenuItems {
 	    		public void actionPerformed(ActionEvent event)
 	    		{
 	    			tablemodel.nyTabell();
-	    			//Todo Fjern dette?
-	    			/*
-	    			if(file.pathNotFound()) {
-	    				stream.openOutputFile(file.saveLayoutAtPath(), tablemodel);
-		    			stream.closeFile();
-		    			file.setPathToNull();
-	    			} else {
-	    				stream.openOutputFile(file.saveLayout(), tablemodel);
-		    			stream.closeFile();
-		    			file.setPathToNull();
-	    			}
-	    			*/
 	    		}
 	    	}
 	    );
@@ -134,7 +122,6 @@ public class MenuItems {
 	            } 
 	         }
 	    );
-		
 		
 		return fileMenu;
 	}

@@ -9,7 +9,6 @@ import javax.swing.table.TableCellRenderer;
  * ComboBoxRendererUtfylling Class
  * Renders the JComboBox (list) and the cell (tablecell) for Utfylling
  * @author Henrik Haukaas
- *
  */
 public class ComboBoxRendererUtfylling extends DefaultTableCellRenderer implements ListCellRenderer, TableCellRenderer  {
 //VARIABLER-START

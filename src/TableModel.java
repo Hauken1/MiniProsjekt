@@ -5,7 +5,6 @@ import javax.swing.table.AbstractTableModel;
  * Class that makes the TableModel for the table. 
  * This is where all all the tables data get stored. 
  * @author Henrik Haukaas
- *
  */
 class TableModel extends AbstractTableModel {
 //VARIABLER-START 	

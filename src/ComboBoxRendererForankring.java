@@ -9,7 +9,6 @@ import javax.swing.table.TableCellRenderer;
  * ComboBoxRendererForankring Class
  * Renders the JComboBox (list) and the cell (tablecell) for Forankring
  * @author Henrik Haukaas
- *
  */
 public class ComboBoxRendererForankring extends DefaultTableCellRenderer implements ListCellRenderer, TableCellRenderer  { 
 //VARIABLER-START

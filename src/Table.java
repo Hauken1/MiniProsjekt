@@ -99,16 +99,14 @@ public class Table extends JPanel {
       			t = (int) tableModel.getValueAt(table.getSelectedRow(),0);
       			if (t == 1 || t == 2) {		//sjekker om det er JTextField eller JTextArea
       			
-      				JTextField rader = new JTextField(10);
-  					JTextField kolonner = new JTextField(10);
-  					JTextField bredde = new JTextField(10);
-  					JTextField hoyde = new JTextField(10);
+      				JTextField rader = new JTextField("0");
+  					JTextField kolonner = new JTextField("0");
+  					JTextField bredde = new JTextField("0");
+  					JTextField hoyde = new JTextField("0");
       				
       				if ( t == 1) {		//JtextField
       					
       					JPanel editorPanel = new JPanel();
-      					editorPanel.add(new JLabel(inter.returnMessage("antrad")));
-      					editorPanel.add(rader);
       					editorPanel.add(new JLabel(inter.returnMessage("antkol")));
       					editorPanel.add(kolonner);
       					editorPanel.add(new JLabel(inter.returnMessage("hoy")));
@@ -157,7 +155,7 @@ public class Table extends JPanel {
       							tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
       						} catch(Exception e1){
       							JOptionPane.showMessageDialog(null, inter.returnMessage("brukttall"));
-      						}
+      						} 
       					} 
       				}	
       			} else {
