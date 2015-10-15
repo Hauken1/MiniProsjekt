@@ -12,8 +12,6 @@ import javax.swing.JToolBar;
  * @author Henrik Haukaas
  *
  */
-
-
 public class Toolbar extends JToolBar {
 //VARIABLER-START  
 	private Internationalization inter;
@@ -134,5 +132,4 @@ public class Toolbar extends JToolBar {
     public JButton getHjelp() {
     	return hjelp; 
     }
-    
 }
