@@ -1,14 +1,5 @@
-import java.awt.Container;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Vector;
-
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 /**
  * Class that makes the TableModel for the table. 
@@ -18,7 +9,6 @@ import javax.swing.table.AbstractTableModel;
  */
 class TableModel extends AbstractTableModel {
 //VARIABLER-START 	
-	private JLabel label;
 	private Internationalization inter = new Internationalization();
 	
 	private String[] columnNames = {
@@ -64,6 +54,7 @@ class TableModel extends AbstractTableModel {
 		return true;
 	 }
 	//Allerede spesifisert i javadoc:
+	//Setter medsendt komponent til riktig rad og kolonne
 	public void setValueAt(Object object, int n, int n2) {
 		((Komponent)data.elementAt(n)).setKolonne(n2, object);
 		fireTableCellUpdated(n, n2);

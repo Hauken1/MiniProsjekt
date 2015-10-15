@@ -1,5 +1,4 @@
 import javax.swing.JComboBox;
-import javax.swing.ListCellRenderer;
 /**
  * CellEditor for the "Utfylling" column
  * Adds items and sets renderer for the JComboBOx

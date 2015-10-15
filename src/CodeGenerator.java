@@ -2,10 +2,6 @@ import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.Formatter;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-
 public class CodeGenerator {
 
 	private Formatter output;

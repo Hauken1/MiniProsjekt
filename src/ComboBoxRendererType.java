@@ -1,5 +1,4 @@
 import java.awt.Component;
-
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.ListCellRenderer;
