@@ -30,7 +30,6 @@ public class KomponentTest {
             assertEquals(1, dataModel1.getValueAt(0, 5));
         } catch (Exception e) {
             fail(e.getMessage());    	
-            
         }
 	}
 	

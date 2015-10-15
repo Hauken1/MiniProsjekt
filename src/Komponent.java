@@ -105,6 +105,19 @@ public class Komponent implements Serializable{
             case 8: {
                 return new Integer(forankring);
             }
+            case 9: {
+                return new Integer(textRader);
+            }
+            case 10: {
+                return new Integer(textKolonner);
+            }
+            case 11: {
+                return new Integer(textBredde);
+            }
+            case 12: {
+                return new Integer(textHoyde);
+            }
+            
             
         }
         return null;
