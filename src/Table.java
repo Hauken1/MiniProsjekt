@@ -1,4 +1,3 @@
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -6,15 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.Serializable;
-import java.text.NumberFormat;
-
 import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -23,15 +15,30 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.text.NumberFormatter;
-
+/**
+ * Class for Defining how the table should look like.
+ * Sets custom renders and size of columns in the tabel. 
+ * It also adds a popup menu with options for when the a row is right-clicked.
+ * @author Henrik Haukaas
+ *
+ */
 public class Table extends JPanel {
-
+//VARIABLER-START
 	private JTable table; 
 	private JPopupMenu popupMenu; 
 	private final GridBagConstraints constraints;
-	
+//VARIABLER-SLUTT
+//FUNKSJONER-START
+	/**
+	 * Constructor for the table
+	 * Makes a table out of the data model
+	 * sets size of the columns.
+	 * sets cellrenders and editors
+	 * adds a mouseListener to the tabel for when it is right-clicked.
+	 * Makes the "EgenskapsEditor" so the user can give inputs on how a
+	 * JTextArea-or JTextField Komponent should look like when saved to a new layout.
+	 * @param tableModel	Current data model
+	 */
 	public Table(TableModel tableModel){
 		super(new GridLayout(1,0));
 		int n; 
@@ -117,12 +124,15 @@ public class Table extends JPanel {
       						String textKolonner = kolonner.getText();
       						String textHoyde = hoyde.getText();
       						String textBredde = bredde.getText();
-      						
-      						n1 = Integer.parseInt(textRader);
-      						n2 = Integer.parseInt(textKolonner);
-      						n3 = Integer.parseInt(textHoyde);
-      						n4 = Integer.parseInt(textBredde);
-      						tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
+      						try {
+      							n1 = Integer.parseInt(textRader);
+      							n2 = Integer.parseInt(textKolonner);
+      							n3 = Integer.parseInt(textHoyde);
+      							n4 = Integer.parseInt(textBredde);
+      							tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
+      						} catch (Exception e1) {
+      							JOptionPane.showMessageDialog(null, "Bruk tall når du skal velge attributter!");
+      						}
       					}
       				}
       				
@@ -138,12 +148,15 @@ public class Table extends JPanel {
       					svar = JOptionPane.showConfirmDialog(null, editorPanel, "Skriv inn attributter for valgt JTextArea", JOptionPane.OK_CANCEL_OPTION);
       				
       					if (svar == JOptionPane.OK_OPTION) {
-      					
-      						String textRader = rader.getText();
-      						String textKolonner = kolonner.getText();
-      						n1 = Integer.parseInt(textRader);
-      						n2 = Integer.parseInt(textKolonner);
-      						tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
+      						try {
+      							String textRader = rader.getText();
+      							String textKolonner = kolonner.getText();
+      							n1 = Integer.parseInt(textRader);
+      							n2 = Integer.parseInt(textKolonner);
+      							tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
+      						} catch(Exception e1){
+      							JOptionPane.showMessageDialog(null, "Bruk tall når du skal velge attributter!");
+      						}
       					} 
       				}	
       			} else {
@@ -162,30 +175,48 @@ public class Table extends JPanel {
         JScrollPane ScrollPane = new JScrollPane(table);
         add(ScrollPane);
 	}
+	/**
+	 * Gets selected row
+	 * @return	returns selected row
+	 */
 	 public int getSelectedRow() {
 	        return table.getSelectedRow();
 	    }
-	
+	/**
+	 * Class for the mouselistener of the Table class
+	 * Shows the popup menu when a selected row is right-clicked
+	 * @author Henrik Haukaas
+	 *
+	 */
 	 public class PopupMouseListener extends MouseAdapter {
 		JPopupMenu popup; 
-		 
+		 /**
+		  * Constructor for the PopupMouseListerner class
+		  * makes popup equal to popupMenu made in the table Class
+		  * @see private void doEvent(mouseEvent e)
+		  * @param popupMenu
+		  */
 		PopupMouseListener(JPopupMenu popupMenu) {
 			popup = popupMenu; 
 		}
-			
+		//Allerede spesifisert i javadoc.	
 		public void mousePressed(MouseEvent e) {
 			doEvent(e); 
 		}
+		//Allerede spesifisert i javadoc.
 		public void mouseReleased(MouseEvent e) {
 			doEvent(e);
 					
 		}
-			
+		/**
+		 * shows the popup menu when the selected row is right clicked
+		 * @param e	mouseevent pressed/released
+		 */
 		private void doEvent(MouseEvent e) {
 			if (e.isPopupTrigger() && table.getSelectedRow() > -1  ) {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		}
 	}
-	 
-}
+//FUNKSJONER-SLUTT	 
+}//SLUTT TABLE
