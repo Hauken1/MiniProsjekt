@@ -24,7 +24,7 @@ public class GridBagFrame extends JFrame
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
-	/*
+	/**
 	 * Constructor that gets called in the Main function. Creates the layout
 	 * Initializes class calls
 	 * Set constraints on GUI bar, toolbar and table.
@@ -75,7 +75,6 @@ public class GridBagFrame extends JFrame
         };
 	    toolBar.getNy().addActionListener(actionNy);
 	    
-	    
     	//Hente fil funksjonalitet		
 		ActionListener actionHent = new ActionListener(){
 
@@ -85,7 +84,6 @@ public class GridBagFrame extends JFrame
             }
         };
 		toolBar.getHent().addActionListener(actionHent);
-		
 		
 		//Lagre funksjonalitet
 		ActionListener actionLagre = new ActionListener(){
@@ -97,7 +95,6 @@ public class GridBagFrame extends JFrame
         };
 		toolBar.getLagre().addActionListener(actionLagre);
 		
-		
 		//Generer et preview av java kildekoden
 		ActionListener actionPreview = new ActionListener(){
 
@@ -108,7 +105,6 @@ public class GridBagFrame extends JFrame
         	}
         };
 		toolBar.getPreview().addActionListener(actionPreview);
-		
 		
 		//Genererer java kildekode
 		ActionListener actionGenerer = new ActionListener(){
@@ -122,7 +118,6 @@ public class GridBagFrame extends JFrame
         };
 		toolBar.getGenererKode().addActionListener(actionGenerer);
 		
-		
 		//Ny rad funksjonalitet
 		ActionListener actionNyRad = new ActionListener(){
 
@@ -131,7 +126,6 @@ public class GridBagFrame extends JFrame
             }
         };
 		toolBar.getNyRad().addActionListener(actionNyRad);
-		
 		
 		//Flytt rad opp funksjonalitet
 		ActionListener actionFlyttOpp = new ActionListener(){
@@ -172,5 +166,4 @@ public class GridBagFrame extends JFrame
 	    add(table, BorderLayout.SOUTH);	//Legger tabellen til framen
 	    
 	} // Slutt GridBagFrame constructor
-
 } // Slutt class GridBagFrame

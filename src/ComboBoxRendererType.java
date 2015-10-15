@@ -8,7 +8,6 @@ import javax.swing.table.TableCellRenderer;
  * ComboBoxRendererType Class
  * Renders the JComboBox (list) and the cell (tablecell) for Type
  * @author Henrik Haukaas
- *
  */
 public class ComboBoxRendererType extends DefaultTableCellRenderer implements ListCellRenderer, TableCellRenderer{
 //FUNKSJONER-START	

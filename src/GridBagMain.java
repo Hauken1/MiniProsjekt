@@ -31,7 +31,6 @@ public class GridBagMain
 	   catch (IllegalAccessException e) {
 		   // handle exception
 	   } 
-	   
       GridBagFrame gridBagFrame = new GridBagFrame();  
       gridBagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       gridBagFrame.setSize(800, 300); 

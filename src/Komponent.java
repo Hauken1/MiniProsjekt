@@ -31,7 +31,7 @@ public class Komponent implements Serializable{
 //FUNKSJONER-START
     /**
      * Class constructor
-     * Sets the default date for a given Komponent
+     * Sets the default data for a given Komponent
      */
     public Komponent() {
     	rad = 0;

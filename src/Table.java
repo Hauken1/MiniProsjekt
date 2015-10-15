@@ -27,6 +27,7 @@ public class Table extends JPanel {
 	private JTable table; 
 	private JPopupMenu popupMenu; 
 	private final GridBagConstraints constraints;
+	private Internationalization inter = new Internationalization();
 //VARIABLER-SLUTT
 //FUNKSJONER-START
 	/**
@@ -78,14 +79,14 @@ public class Table extends JPanel {
         table.setSelectionMode(0);
         
         popupMenu = new JPopupMenu(); 
-      	JMenuItem slettRad = new JMenuItem("Slett rad");
+      	JMenuItem slettRad = new JMenuItem(inter.returnMessage("deleterow"));
       	slettRad.addActionListener(new ActionListener() {
       		public void actionPerformed(ActionEvent e) {
       			tableModel.slettRad(table.getSelectedRow());
       		}
       	});
       	
-      	JMenuItem editor = new JMenuItem("Egenskapseditor for valgt type (JTextField/JTextArea)");
+      	JMenuItem editor = new JMenuItem(inter.returnMessage("egenskap"));
       	editor.addActionListener(new ActionListener() {
       		public void actionPerformed(ActionEvent e) {
       			int t;
@@ -98,25 +99,23 @@ public class Table extends JPanel {
       			t = (int) tableModel.getValueAt(table.getSelectedRow(),0);
       			if (t == 1 || t == 2) {		//sjekker om det er JTextField eller JTextArea
       			
-      				JTextField rader = new JTextField(10);
-  					JTextField kolonner = new JTextField(10);
-  					JTextField bredde = new JTextField(10);
-  					JTextField hoyde = new JTextField(10);
+      				JTextField rader = new JTextField("0");
+  					JTextField kolonner = new JTextField("0");
+  					JTextField bredde = new JTextField("0");
+  					JTextField hoyde = new JTextField("0");
       				
       				if ( t == 1) {		//JtextField
       					
       					JPanel editorPanel = new JPanel();
-      					editorPanel.add(new JLabel("Antall rader:"));
-      					editorPanel.add(rader);
-      					editorPanel.add(new JLabel("Antall kolonner:"));
+      					editorPanel.add(new JLabel(inter.returnMessage("antkol")));
       					editorPanel.add(kolonner);
-      					editorPanel.add(new JLabel("Angi hoyde:"));
+      					editorPanel.add(new JLabel(inter.returnMessage("hoy")));
       					editorPanel.add(hoyde);
-      					editorPanel.add(new JLabel("Angi Bredde:"));
+      					editorPanel.add(new JLabel(inter.returnMessage("bredde")));
       					editorPanel.add(bredde);
       					editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.Y_AXIS));
       					
-      					svar = JOptionPane.showConfirmDialog(null, editorPanel, "Skriv inn attributter for valgt JTextField", JOptionPane.OK_CANCEL_OPTION);
+      					svar = JOptionPane.showConfirmDialog(null, editorPanel, inter.returnMessage("editnavn"), JOptionPane.OK_CANCEL_OPTION);
       					
       					if (svar == JOptionPane.OK_OPTION) {
           					
@@ -131,7 +130,7 @@ public class Table extends JPanel {
       							n4 = Integer.parseInt(textBredde);
       							tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
       						} catch (Exception e1) {
-      							JOptionPane.showMessageDialog(null, "Bruk tall når du skal velge attributter!");
+      							JOptionPane.showMessageDialog(null, inter.returnMessage("bruktall"));
       						}
       					}
       				}
@@ -139,13 +138,13 @@ public class Table extends JPanel {
       				if ( t == 2) {	//Hvis det er et JTextArea
       				
       					JPanel editorPanel = new JPanel();
-      					editorPanel.add(new JLabel("Antall rader:"));
+      					editorPanel.add(new JLabel(inter.returnMessage("antrad")));
       					editorPanel.add(rader);
-      					editorPanel.add(new JLabel("Antall kolonner:"));
+      					editorPanel.add(new JLabel(inter.returnMessage("antkol")));
       					editorPanel.add(kolonner);
       					editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.Y_AXIS));
       				
-      					svar = JOptionPane.showConfirmDialog(null, editorPanel, "Skriv inn attributter for valgt JTextArea", JOptionPane.OK_CANCEL_OPTION);
+      					svar = JOptionPane.showConfirmDialog(null, editorPanel, inter.returnMessage("editnavn2"), JOptionPane.OK_CANCEL_OPTION);
       				
       					if (svar == JOptionPane.OK_OPTION) {
       						try {
@@ -155,13 +154,13 @@ public class Table extends JPanel {
       							n2 = Integer.parseInt(textKolonner);
       							tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
       						} catch(Exception e1){
-      							JOptionPane.showMessageDialog(null, "Bruk tall når du skal velge attributter!");
-      						}
+      							JOptionPane.showMessageDialog(null, inter.returnMessage("brukttall"));
+      						} 
       					} 
       				}	
       			} else {
       			JOptionPane.showMessageDialog(getParent(), 
-           				"Type må være satt til JTextField eller JTextArea");
+      					inter.returnMessage("edittest"));
       			}
       		}
       	});
