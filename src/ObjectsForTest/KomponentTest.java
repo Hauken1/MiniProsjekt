@@ -52,13 +52,12 @@ public class KomponentTest {
     @Test
     public void testGetValueAt() {
     	TableModel dataModel = new TableModel();
+    	dataModel.append(new Komponent());
         
-        dataModel.setValueAt(dataModel, 0, 1);
+    	dataModel.setValueAt(2, 0, 0);
+    	
+        //dataModel.changeKomponentType(0, 1);
         
-        assertEquals("Kanga", dataModel.getValueAt(0, 1));
-        assertEquals("Animal", dataModel.getValueAt(0, 0));
-        dataModel.append(new Komponent());
-        assertEquals("Alex", dataModel.getValueAt(1, 1));
-        assertEquals("Lion", dataModel.getValueAt(1, 0));
+        assertEquals(2, dataModel.getValueAt(0, 0));
     }
 }

@@ -122,4 +122,8 @@ public class Komponent implements Serializable{
             }
         }   
     }  
+    
+    public void setType(int value) {
+    	this.type = value;
+    }
 }
