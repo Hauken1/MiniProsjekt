@@ -2,8 +2,15 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+/**
+ * Main class that starts the program calls.
+ */
 public class GridBagMain
 { 
+	/**
+	 * Calls the main fram object and sets its window properties.
+	 * @param args
+	 */
    public static void main(String[] args)
    { 
 	   

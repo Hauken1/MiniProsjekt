@@ -1,12 +1,10 @@
+package ObjectsForTest;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
-/**
- * Class that makes the component of the TableModel
- * Sets attributes to the given component
- * @author Henrik Haukaas
- *
- */
+
 public class Komponent implements Serializable{
-//VARIABLER-START
+
 	int rad;
     int kolonne;
     int kolonner;
@@ -14,10 +12,6 @@ public class Komponent implements Serializable{
     int forankring;
     int skalering;
     int type;
-    int textRader;
-    int textKolonner;
-    int textBredde;
-    int textHoyde;
     String anker;
     String fyll;
     String variabelnavn;
@@ -27,12 +21,7 @@ public class Komponent implements Serializable{
     public static String[] TYPE = new String[]{"JLabel", "JTextField", "JTextArea", "JButton"};
     public static String[] FORANKRING = new String[]{"CENTER", "NORTH", "NORTHEAST", "EAST", "SOUTHEAST", "SOUTH", "SOUTHWEST", "WEST", "NORTHWEST"};
     public static String[] SKALERING = new String[]{"NONE", "HORIZONTAL", "VERTICAL", "BOTH"};
-//VARIABLER-SLUTT    
-//FUNKSJONER-START
-    /**
-     * Class constructor
-     * Sets the default date for a given Komponent
-     */
+    
     public Komponent() {
     	rad = 0;
         kolonne = 0;
@@ -45,37 +34,20 @@ public class Komponent implements Serializable{
         variabelnavn = "";
         tekst = "";
         type = 0;
-        textRader = 0;
-        textKolonner= 0;
-        textBredde= 0;
-        textHoyde = 0;
-        
     }
     
-    /**
-     * Constructor that sets the data for the given Komponent
-     * Calls the main constructor to set all the data
-     * @param string	text being set to variabelnavn string
-     * @param string2	text being set to tekst string
-     * @param n	integer being set to the rad variable
-     * @param n2 integer being set to the kolonne variable
-     * @param n3 integer being set to the kolonner variable
-     * @param n4 integer being set to the rader variable
-     */
-    public Komponent(String string, String string2, int n, int n2, int n3, int n4){
+    public Komponent(String variabelnavn) {
+    	this.variabelnavn = variabelnavn;
+    }
+    
+    public Komponent(int n, int n2, int n3, int n4) {
     	this();
-		rad = n;
-		kolonne = n2;
-		kolonner = n3;
-		rader = n4;
-		variabelnavn = string; 
-		tekst = string2; 
-	}
-    /**
-     * gets the data of the given column and returns it
-     * @param n	Column number
-     * @return	returns the data of the given column
-     */
+    	rad = n;
+    	kolonne = n2;
+    	kolonner = n3;
+    	rader = n4;
+    }
+    
     public Object getKolonne(int n) {
         switch (n) {
             case 0: {
@@ -109,11 +81,7 @@ public class Komponent implements Serializable{
         }
         return null;
     }
-    /**
-     * Sets the value of a given column
-     * @param n	Column number
-     * @param object	data that is being set to the column object
-     */
+    
     public void setKolonne(int n, Object object) {
         switch (n) {
             case 0: {
@@ -153,21 +121,5 @@ public class Komponent implements Serializable{
                 break;
             }
         }   
-    }
-    /**
-     * Used to give user-chosen attributes to a JTextField or JTextArea 
-     * @see editor in Table class (ActionListener)
-     * @param n1	Given rows to the JTextArea
-     * @param n2	Given columns to JTextArea/JTextField
-     * @param n3	Given height to JTextArea/JTextField
-     * @param n4	Given width to JTextArea/JTextField
-     */
-    public void egenskapsEditor(int n1, int n2, int n3, int n4) {
-    	textRader = n1;
-    	textKolonner = n2; 
-    	textHoyde = n3; 
-    	textBredde = n4;
-    
-    }
-//FUNKSJONER-SLUTT   
-}//KOMPONENT SLUTT
+    }  
+}

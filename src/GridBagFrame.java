@@ -6,6 +6,11 @@ import javax.swing.JToolBar;
 import javax.swing.JOptionPane;
 import javax.swing.JMenuBar;
 
+/**
+ * Class that creates the layout that handles most of the GUI on the screen.
+ * Sets the constraints on the top bar, toolbar and table
+ * and adds them to the layout
+ */
 public class GridBagFrame extends JFrame 
 {
 	private final BorderLayout layout;
@@ -19,7 +24,14 @@ public class GridBagFrame extends JFrame
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
-	// sette opp GUI:
+	/*
+	 * Constructor that gets called in the Main function. Creates the layout
+	 * Initializes class calls
+	 * Set constraints on GUI bar, toolbar and table.
+	 * Adds the bar, toolbar and table to the layout
+	 * Sets the action listener for the toolbar with it's
+	 * responding function call.
+	 */
 	public GridBagFrame()
 	{
 		super("GridBagLayout editor");
@@ -51,7 +63,8 @@ public class GridBagFrame extends JFrame
 	    
 	    bar.add(menuItems.returnFileMenu(tableModel));
 	    bar.add(menuItems.returnRedigerMenu(tableModel));
-	    bar.add(menuItems.returnHjelpMenu());    	
+	    bar.add(menuItems.returnHjelpMenu(getParent()));
+	    	
 	    add(bar, BorderLayout.NORTH); //Legger meny til framen
 	
 	    ActionListener actionNy = new ActionListener(){
@@ -159,4 +172,5 @@ public class GridBagFrame extends JFrame
 	    add(table, BorderLayout.SOUTH);	//Legger tabellen til framen
 	    
 	} // Slutt GridBagFrame constructor
+
 } // Slutt class GridBagFrame

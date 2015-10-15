@@ -6,6 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Vector;
 
+/**
+ * Open and closes the choosen file that data is loaded or saved too.
+ * Has functions that takes care of the output and input stream of data too file.
+ * Also saves vector komponent object to choosen file.
+ */
 public class CreateSequentialFile {
 
 	private ObjectInputStream input;
@@ -15,7 +20,9 @@ public class CreateSequentialFile {
 	}
 	
 	/**
-	 * Open file to save data
+	 * Open file if path is not null. 
+	 * @param path
+	 * @param tableModel
 	 */
 	public void openOutputFile(Path path, TableModel tableModel) {
 		if(path != null) {
@@ -29,7 +36,9 @@ public class CreateSequentialFile {
 	}
 	
 	/**
-	 * Open file from where to load data
+	 * Open file if path is not null. 
+	 * @param path
+	 * @param tableModel
 	 */
 	public void openInputFile(Path path, TableModel tableModel) {
 		if(path != null) {
@@ -43,7 +52,8 @@ public class CreateSequentialFile {
 	}
 	
 	/**
-	 * Saves an layout to file
+	 * Saves the vector komponent object to file.
+	 * @param tableModel
 	 */
 	public void saveLayoutToFile(TableModel tableModel) {
 		try {
@@ -54,12 +64,13 @@ public class CreateSequentialFile {
 	}
 	
 	/**
-	 * Load a selected layout from file
+	 * Load the vector komponent object from file.
+	 * @param tableModel
 	 */
 	public void loadLayoutFromFile(TableModel tableModel) {
 		try {
-				final Vector<Komponent> test = (Vector<Komponent>) input.readObject();
-				tableModel.setVector(test);
+				final Vector<Komponent> temp = (Vector<Komponent>) input.readObject();
+				tableModel.setVector(temp);
 		} catch (EOFException endOfFileE) {
 			System.err.println("No more to read");
 		} catch (ClassNotFoundException classNotFoundE) {
@@ -71,7 +82,7 @@ public class CreateSequentialFile {
 	}
 	
 	/**
-	 * Close file and terminate application
+	 * Close file
 	 */
 	public void closeFile() {
 		try {

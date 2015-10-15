@@ -1,8 +1,14 @@
+import java.awt.Container;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
+/**
+ * Creates the top bar with file/edit/help drop downs.
+ */
 public class MenuItems {
 
 	private Internationalization inter;
@@ -12,6 +18,9 @@ public class MenuItems {
 	private JMenu redigerMenu;
 	private JMenu hjelpMenu;
 	
+	/**
+	 * Initializes other class calls and the drop down bars
+	 */
 	public MenuItems() {
 		
 		stream = new CreateSequentialFile();
@@ -154,7 +163,26 @@ public class MenuItems {
 		return redigerMenu;
 	}
 	
-	public JMenu returnHjelpMenu() {
+	/**
+	 * Makes the drop down for hjelpMenu
+	 * @return hjelpMenu
+	 */
+	public JMenu returnHjelpMenu(Container frame) {
+		
+		JMenuItem hjelpItem = new JMenuItem(inter.returnMessage("help")); // lage avslutt item
+	    hjelpItem.setMnemonic('n'); // set mnemonic to x
+	    hjelpMenu.add(hjelpItem);
+	    hjelpItem.addActionListener(
+	    	new ActionListener() // anonymous inner class
+	         {
+	            @Override
+	            public void actionPerformed(ActionEvent event)
+	            {
+	               JOptionPane.showMessageDialog(frame , inter.returnMessage("helpText"));
+	            } 
+	         }
+	    );
+		
 		return hjelpMenu;
 	}
 }

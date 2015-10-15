@@ -58,7 +58,6 @@ class TableModel extends AbstractTableModel {
 	public void setValueAt(Object object, int n, int n2) {
 		((Komponent)data.elementAt(n)).setKolonne(n2, object);
 		fireTableCellUpdated(n, n2);
-
 	}
 	/**
 	 * Makes a new Komponent object into the data Vector
