@@ -55,8 +55,6 @@ public class KomponentTest {
     	dataModel.append(new Komponent());
         
     	dataModel.setValueAt(2, 0, 0);
-    	
-        //dataModel.changeKomponentType(0, 1);
         
         assertEquals(2, dataModel.getValueAt(0, 0));
     }
