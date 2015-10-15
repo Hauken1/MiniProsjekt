@@ -26,7 +26,7 @@ public class CodeGenerator {
 	/**
 	 * Gets the choosen path from the user so data can be saved to file.
 	 * Takes tablemodel to pass along to javaSourceCodeToFile function. 
-	 * @param tablemodel
+	 * @param tm TableModel object
 	 */
 	public void openSourceFile(TableModel tm) {
 		Path p = file.saveLayoutAtPath();
@@ -44,7 +44,7 @@ public class CodeGenerator {
 	
 	/**
 	 * Writes hard coded output to the file, with data from Komponent.
-	 * @param tablemodel object
+	 * @param tm TableModel object
 	 */
 	public void javaSourceCodeToFile(TableModel tm) {
 		output.format("import javax.swing.*;"
@@ -78,7 +78,7 @@ public class CodeGenerator {
 	/**
 	 * Gets the choosen path from the user so data can be saved to file.
 	 * Takes tablemodel to pass along to javaPreviewToFile function. 
-	 * @param tablemodel
+	 * @param tm TableModel object
 	 */
 	public void openPreviewFile(TableModel tm) {
 		Path p = file.saveLayoutAtPath();
@@ -95,7 +95,7 @@ public class CodeGenerator {
 	}
 	/**
 	 * Writes hard coded output to the file, with data from Komponent.
-	 * @param tablemodel
+	 * @param tm TableModel object
 	 */
 	public void javaPreviewToFile(TableModel tm) {
 		output.format("import javax.swing.*;"
@@ -113,7 +113,7 @@ public class CodeGenerator {
 	
 	/**
 	 * Checks the tabel object types and writes the proper type to file
-	 * @param tabelmodel
+	 * @param tm TableModel object
 	 */
 	public void typeCreation(TableModel tm) {
 		for (int i=0; i<tm.getRowCount(); i++) {
@@ -135,7 +135,7 @@ public class CodeGenerator {
 	
 	/**
 	 * Writes the correct constraints for the given type to file
-	 * @param tabelmodel
+	 * @param tm TableModel object
 	 */
 	public void constraints(TableModel tm) {
     	String t="4";

@@ -1,73 +1,129 @@
 package ObjectsForTest;
-
-import static org.junit.Assert.*;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-import org.junit.Test;
+public class KomponentTest implements Serializable{
 
-public class KomponentTest {
-
-	/**
-	 * Saves and load and test stream of data with a Komponent object.
-	 */
-	@Test
-	public void loadAndSaveTest() {
-		TableModel dataModel = new TableModel();
-		dataModel.append(new Komponent());
-        
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            dataModel.saveToFile(oos);
-            oos.flush();
-            TableModel dataModel1 = new TableModel();
-            ByteArrayInputStream bais = new ByteArrayInputStream(
-                    baos.toByteArray());
-            ObjectInputStream ois = new ObjectInputStream(bais);
-            dataModel1.loadFromFile(ois);
-            assertEquals("", dataModel1.getValueAt(0, 1));
-            assertEquals(1, dataModel1.getValueAt(0, 5));
-        } catch (Exception e) {
-            fail(e.getMessage());
+	int rad;
+    int kolonne;
+    int kolonner;
+    int rader;
+    int forankring;
+    int skalering;
+    int type;
+    String anker;
+    String fyll;
+    String variabelnavn;
+    String tekst;
+    
+    //Strenger for hvor lang de ulike ComboBoxene skal være:
+    public static String[] TYPE = new String[]{"JLabel", "JTextField", "JTextArea", "JButton"};
+    public static String[] FORANKRING = new String[]{"CENTER", "NORTH", "NORTHEAST", "EAST", "SOUTHEAST", "SOUTH", "SOUTHWEST", "WEST", "NORTHWEST"};
+    public static String[] SKALERING = new String[]{"NONE", "HORIZONTAL", "VERTICAL", "BOTH"};
+    
+    public KomponentTest() {
+    	rad = 0;
+        kolonne = 0;
+        kolonner = 1;
+        rader = 1;
+        anker = "java.awt.GridBagConstraints.CENTER";	//Brukes for å sende riktig constraints til nytt program. Dette er default input.
+        fyll = "java.awt.GridBagConstraints.NONE";		// ---- | | -----. TODO må endres dynamisk eventuelt med return string funksjon
+        forankring = 0;
+        skalering = 0;
+        variabelnavn = "";
+        tekst = "";
+        type = 0;
+    }
+    
+    public KomponentTest(String variabelnavn) {
+    	this.variabelnavn = variabelnavn;
+    }
+    
+    public KomponentTest(int n, int n2, int n3, int n4) {
+    	this();
+    	rad = n;
+    	kolonne = n2;
+    	kolonner = n3;
+    	rader = n4;
+    }
+    
+    public Object getKolonne(int n) {
+        switch (n) {
+            case 0: {
+                return new Integer(type);
+            }
+            case 1: {
+                return variabelnavn;
+            }
+            case 2: {
+                return tekst;
+            }
+            case 3: {
+                return new Integer(rad);
+            }
+            case 4: {
+                return new Integer(kolonne);
+            }
+            case 5: {
+                return new Integer(rader);
+            }
+            case 6: {
+                return new Integer(kolonner);
+            }
+            case 7: {
+                return new Integer(skalering);
+            }
+            case 8: {
+                return new Integer(forankring);
+            }
+            
         }
-	}
-	
-	/**
-	 * Test of TableModel variables. 
-	 */
-	@Test
-    public void testTableModel() {
-        TableModel dataModel = new TableModel();
-        assertEquals(0, dataModel.getRowCount());
-        assertEquals(9, dataModel.getColumnCount());
-        assertEquals("Row", dataModel.getColumnName(3));
+        return null;
     }
-
-	/**
-	 * Initialize constructor of komponent and checks that it gets added to the vector
-	 */
-    @Test
-    public void testConstructor() {
-    	TableModel dataModel = new TableModel();
-        dataModel.append(new Komponent());
-        assertEquals(1, dataModel.getRowCount());
-    }
-
-    /**
-     * Make a new Komponent in the vector and sets the Komponent type and
-     * checks that the correct type is set
-     */
-    @Test
-    public void testGetValueAt() {
-    	TableModel dataModel = new TableModel();
-    	dataModel.append(new Komponent());
-        
-    	dataModel.setValueAt(2, 0, 0);
-        
-        assertEquals(2, dataModel.getValueAt(0, 0));
+    
+    public void setKolonne(int n, Object object) {
+        switch (n) {
+            case 0: {
+                type = (Integer)object;
+                break;
+            }
+            case 1: {
+                variabelnavn = (String)object;
+                break;
+            }
+            case 2: {
+                tekst = (String)object;
+                break;
+            }
+            case 3: {
+                rad = (Integer)object;
+                break;
+            }
+            case 4: {
+                kolonne = (Integer)object;
+                break;
+            }
+            case 5: {
+                rader = (Integer)object;
+                break;
+            }
+            case 6: {
+                kolonner = (Integer)object;
+                break;
+            }
+            case 7: {
+                skalering = (Integer)object;
+                break;
+            }
+            case 8: {
+                forankring = (Integer)object;
+                break;
+            }
+        }   
+    }  
+    
+    public void setType(int value) {
+    	this.type = value;
     }
 }

@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.AbstractTableModel;
 
-class TableModel extends AbstractTableModel {
+public class TableModelTest extends AbstractTableModel {
 	private JLabel label;
-	private Internationalization inter = new Internationalization();
+	private InternationalizationTest inter = new InternationalizationTest();
 	
 		private String[] columnNames = {
 				inter.returnMessage("type"),
@@ -29,7 +29,7 @@ class TableModel extends AbstractTableModel {
 				inter.returnMessage("fill"),
 				inter.returnMessage("anchor")};
 		
-		private Vector<Komponent> data = new Vector<Komponent>();   
+		private Vector<KomponentTest> data = new Vector<KomponentTest>();   
 		
 		public int getColumnCount() {
 			return columnNames.length;
@@ -46,7 +46,7 @@ class TableModel extends AbstractTableModel {
 
 		@Override
 		public Object getValueAt(int row, int col) {
-            return ((Komponent) data.elementAt(row)).getKolonne(col);
+            return ((KomponentTest) data.elementAt(row)).getKolonne(col);
            
         }
 		
@@ -59,7 +59,7 @@ class TableModel extends AbstractTableModel {
 		    }
 		
 		public void setValueAt(Object object, int n, int n2) {
-			((Komponent)this.data.elementAt(n)).setKolonne(n2, object);
+			((KomponentTest)this.data.elementAt(n)).setKolonne(n2, object);
 			fireTableCellUpdated(n, n2);
 		}
 		
@@ -71,7 +71,7 @@ class TableModel extends AbstractTableModel {
 		
 		public void flyttOpp(int n) {
 			if (n > 0 && n < data.size()) {
-				Komponent temp = data.elementAt(n);	//Lager et temp object med dataen.
+				KomponentTest temp = data.elementAt(n);	//Lager et temp object med dataen.
 				slettRad(n);
 				data.insertElementAt(temp, n - 1);	//Flytter raden opp
 				fireTableRowsInserted(n - 1, n -1);	//Oppdaterer
@@ -80,7 +80,7 @@ class TableModel extends AbstractTableModel {
 		
 		public void flyttNed(int n) {
 			if ( n < data.size() - 1 ) {
-				Komponent temp = data.elementAt(n);	//Lager et temp object med dataen.
+				KomponentTest temp = data.elementAt(n);	//Lager et temp object med dataen.
 				slettRad(n);
 				data.insertElementAt(temp, n + 1);	//Flytter raden ned
 				fireTableRowsInserted(n + 1, n + 1);	//Oppdaterer
@@ -99,7 +99,7 @@ class TableModel extends AbstractTableModel {
 			return data;
 		}
 		
-		public void setVector(Vector<Komponent> newData) {
+		public void setVector(Vector<KomponentTest> newData) {
 			data = newData;
 			for (int i=0; i<=data.size(); i++) {
 				fireTableRowsInserted(i, i);
@@ -109,7 +109,7 @@ class TableModel extends AbstractTableModel {
 		public void popupEditor(Container editor, int n) {
 		}
 		
-		public void append(Komponent komponent) {
+		public void append(KomponentTest komponent) {
 			data.add(komponent);
 		}
 		
@@ -119,6 +119,6 @@ class TableModel extends AbstractTableModel {
 
 	    public void loadFromFile(ObjectInputStream ois) throws IOException,
 	            ClassNotFoundException {
-	        data = (Vector<Komponent>) ois.readObject();
+	        data = (Vector<KomponentTest>) ois.readObject();
 	    }
 }

@@ -40,8 +40,8 @@ public class MenuItems {
 	/**
 	 * Makes the drop down for fileMenu(New, Load, Save, Save As, Quit).
 	 * With corresponding action listener and their call functions
-	 * @param tablemodel
-	 * @return fileMenu
+	 * @param tablemodel object
+	 * @return fileMenu bar
 	 */
 	public JMenu returnFileMenu(TableModel tablemodel) {
 		
@@ -130,7 +130,7 @@ public class MenuItems {
 	 * Makes the drop down for fileMenu(new row).
 	 * With corresponding action listener and their call functions
 	 * @param tablemodel object
-	 * @return redigerMenu
+	 * @return redigerMenu bar
 	 */
 	public JMenu returnRedigerMenu(TableModel tablemodel) {
 		//Lage "ny tabel" funksjon til fil meny
@@ -154,7 +154,7 @@ public class MenuItems {
 	 * Makes the drop down for hjelpMenu(help).
 	 * With corresponding action listener and it's call function
 	 * @param frame   Får med containter parenten
-	 * @return hjelpMenu
+	 * @return hjelpMenu bar
 	 */
 	public JMenu returnHjelpMenu(Container frame) {
 		

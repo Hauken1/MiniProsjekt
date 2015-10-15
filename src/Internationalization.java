@@ -8,12 +8,15 @@ public class Internationalization {
 	
 	private ResourceBundle messages;
 	
+	/**
+	 * Nothing
+	 */
 	public Internationalization() {
 	}
 
     /**
      * Returns the choosen message
-     * @param message
+     * @param message tells what string to return
      * @return string with correct language or default set to Locale "us"
      */
     public String returnMessage(String message) {   	

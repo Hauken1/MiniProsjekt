@@ -9,7 +9,7 @@ public class GridBagMain
 { 
 	/**
 	 * Calls the main fram object and sets its window properties.
-	 * @param args
+	 * @param args array
 	 */
    public static void main(String[] args)
    { 

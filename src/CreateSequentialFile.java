@@ -16,13 +16,16 @@ public class CreateSequentialFile {
 	private ObjectInputStream input;
 	private ObjectOutputStream output;
 	
+	/**
+	 * Nothing
+	 */
 	public CreateSequentialFile() {
 	}
 	
 	/**
 	 * Open file if path is not null. 
-	 * @param path
-	 * @param tableModel
+	 * @param path location for saving file
+	 * @param tableModel object
 	 */
 	public void openOutputFile(Path path, TableModel tableModel) {
 		if(path != null) {
@@ -37,8 +40,8 @@ public class CreateSequentialFile {
 	
 	/**
 	 * Open file if path is not null. 
-	 * @param path
-	 * @param tableModel
+	 * @param path location to load file from
+	 * @param tableModel object
 	 */
 	public void openInputFile(Path path, TableModel tableModel) {
 		if(path != null) {
@@ -53,7 +56,7 @@ public class CreateSequentialFile {
 	
 	/**
 	 * Saves the vector komponent object to file.
-	 * @param tableModel
+	 * @param tableModel object
 	 */
 	public void saveLayoutToFile(TableModel tableModel) {
 		try {
@@ -65,7 +68,7 @@ public class CreateSequentialFile {
 	
 	/**
 	 * Load the vector komponent object from file.
-	 * @param tableModel
+	 * @param tableModel object
 	 */
 	public void loadLayoutFromFile(TableModel tableModel) {
 		try {

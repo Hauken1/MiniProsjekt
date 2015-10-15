@@ -5,16 +5,16 @@ import java.util.*;
  * Class for finding the computer language and country so the correct
  * language will be displayed to the user.
  */
-public class Internationalization {
+public class InternationalizationTest {
 	
 	private ResourceBundle messages;
 	
-	public Internationalization() {
+	public InternationalizationTest() {
 	}
 
     /**
      * Returns the choosen message
-     * @param message
+     * @param message tells what string to return
      * @return string with correct language or default set to Locale "us"
      */
     public String returnMessage(String message) {   	

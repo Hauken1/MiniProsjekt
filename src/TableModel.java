@@ -1,12 +1,13 @@
 import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.table.AbstractTableModel;
+
 /**
  * Class that makes the TableModel for the table. 
  * This is where all all the tables data get stored. 
  * @author Henrik Haukaas
  */
-class TableModel extends AbstractTableModel {
+public class TableModel extends AbstractTableModel {
 //VARIABLER-START 	
 	private Internationalization inter = new Internationalization();
 	
@@ -58,6 +59,7 @@ class TableModel extends AbstractTableModel {
 		((Komponent)data.elementAt(n)).setKolonne(n2, object);
 		fireTableCellUpdated(n, n2);
 	}
+	
 	/**
 	 * Makes a new Komponent object into the data Vector
 	 * and adds it to the TableModel. Updates the table afterwards. 
@@ -71,6 +73,7 @@ class TableModel extends AbstractTableModel {
 			System.out.println(inter.returnMessage("feil"));
 		}
 	}
+	
 	/**
 	 * Removes all the elements of the current data Vector. 
 	 * Updates the table when elements is removed. 
@@ -80,6 +83,7 @@ class TableModel extends AbstractTableModel {
 		data.removeAllElements();
 		fireTableRowsDeleted(0,n);
 	}
+	
 	/**
 	 * Takes the row currently selected, makes a temporary object of it,
 	 * removes the row, and then inserts it one row higher in the table
@@ -94,6 +98,7 @@ class TableModel extends AbstractTableModel {
 			fireTableRowsInserted(n - 1, n -1);	//Oppdaterer
 		}
 	}
+	
 	/**
 	 * Takes the row currently selected, makes a temporary object of it,
 	 * removes the row, and then inserts it one row lower in the table
@@ -109,6 +114,7 @@ class TableModel extends AbstractTableModel {
 				fireTableRowsInserted(n + 1, n + 1);	//Oppdaterer
 		}
 	}
+	
 	/**
 	 * Removes the row currently selected.
 	 * Updates the row afterwards.
@@ -118,6 +124,7 @@ class TableModel extends AbstractTableModel {
 		data.removeElementAt(n);
 		fireTableRowsDeleted(n,n);
 	}
+	
 	/**
 	 * Returns the data vector 
 	 * Used when saving data to file. 
@@ -126,6 +133,7 @@ class TableModel extends AbstractTableModel {
 	public Object returnVector() {
 		return data;
 	}
+	
 	/**
 	 * Sets a data vector to be equal as the @param newData 
 	 * Used when loading data from file.
@@ -137,6 +145,7 @@ class TableModel extends AbstractTableModel {
 			fireTableRowsInserted(i, i);
 		}
 	}
+	
 	/**
 	 * Makes a a Komponent of the data of the row currently selected and 
 	 * forward it to Komponent so that the data can be changed to the users preference.

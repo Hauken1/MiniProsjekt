@@ -167,13 +167,13 @@ public class Komponent implements Serializable{
             }
         }   
     }
+    
     /**
-     * Used to give user-chosen attributes to a JTextField or JTextArea 
-     * @see editor in Table class (ActionListener)
-     * @param n1	Given rows to the JTextArea
-     * @param n2	Given columns to JTextArea/JTextField
-     * @param n3	Given height to JTextArea/JTextField
-     * @param n4	Given width to JTextArea/JTextField
+     * Used to give user-chosen attributes to a JTextField or JTextArea
+     * @param n1 Given rows to the JTextArea
+     * @param n2 Given columns to JTextArea/JTextField
+     * @param n3 Given height to JTextArea/JTextField
+     * @param n4 Given width to JTextArea/JTextField
      */
     public void egenskapsEditor(int n1, int n2, int n3, int n4) {
     	textRader = n1;
