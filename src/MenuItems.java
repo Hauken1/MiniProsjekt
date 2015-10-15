@@ -164,7 +164,9 @@ public class MenuItems {
 	}
 	
 	/**
-	 * Makes the drop down for hjelpMenu
+	 * Makes the drop down for hjelpMenu(help).
+	 * With corresponding action listener and it's call function
+	 * @param frame   Får med containter parenten
 	 * @return hjelpMenu
 	 */
 	public JMenu returnHjelpMenu(Container frame) {

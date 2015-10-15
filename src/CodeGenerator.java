@@ -55,11 +55,13 @@ public class CodeGenerator {
 		output.format("\n\n\tpublic "+file.returnPathName()+" () {"
 					+ "\n\t  GridBagLayout layout = new GridBagLayout();" 
 					+ "\n\t  GridBagConstraints gbc = new GridBagConstraints();"
-					+ "\n\t  setLayout(layout);"); 
+					+ "\n\t  setLayout(layout);"
+					+ "\n\t  gbc.weightx = 1;"
+					+ "\n\t  gbc.weighty = 1;"); 
 					constraints(tm);
 		output.format("\n\t}"
 					+ "\n\n\tstatic public void main(String[] args) {" 
-					+ "\n\t  JFrame frame = new JFrame(\"Simple Stuff\");"
+					+ "\n\t  JFrame frame = new JFrame(\"GridBagLayout\");"
 					+ "\n\t  "+file.returnPathName()+" panel = new "+file.returnPathName()+"();" 
 					+ "\n\t  frame.add(panel, BorderLayout.CENTER);"
 					+ "\n\t  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);" 
