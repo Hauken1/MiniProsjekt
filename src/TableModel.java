@@ -65,7 +65,7 @@ class TableModel extends AbstractTableModel {
 	 */
 	public void nyRad() {
 		try {
-		data.add(new Komponent("Rad " + data.size(), "Temp", 1, 1, 1, 1));
+		data.add(new Komponent("Rad" + data.size(), "Temp", 1, 1, 1, 1));
 		fireTableRowsInserted(data.size() - 1 , data.size() - 1);
 		} catch (Exception c2) {
 			System.out.println(inter.returnMessage("feil"));

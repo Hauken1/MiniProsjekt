@@ -59,7 +59,6 @@ class TableModel extends AbstractTableModel {
 		    }
 		
 		public void setValueAt(Object object, int n, int n2) {
-	
 			((Komponent)this.data.elementAt(n)).setKolonne(n2, object);
 			fireTableCellUpdated(n, n2);
 		}
@@ -94,7 +93,6 @@ class TableModel extends AbstractTableModel {
 		}
 		
 		public void tilJavaKode(boolean n, File fil) {
-			
 		}
 		
 		public Object returnVector() {
@@ -109,8 +107,6 @@ class TableModel extends AbstractTableModel {
 		}
 		
 		public void popupEditor(Container editor, int n) {
-			 
-			
 		}
 		
 		public void append(Komponent komponent) {
@@ -124,7 +120,5 @@ class TableModel extends AbstractTableModel {
 	    public void loadFromFile(ObjectInputStream ois) throws IOException,
 	            ClassNotFoundException {
 	        data = (Vector<Komponent>) ois.readObject();
-
 	    }
-		
 }

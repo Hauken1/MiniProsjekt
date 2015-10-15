@@ -55,11 +55,13 @@ public class CodeGenerator {
 		output.format("\n\n\tpublic "+file.returnPathName()+" () {"
 					+ "\n\t  GridBagLayout layout = new GridBagLayout();" 
 					+ "\n\t  GridBagConstraints gbc = new GridBagConstraints();"
-					+ "\n\t  setLayout(layout);"); 
+					+ "\n\t  setLayout(layout);"
+					+ "\n\t  gbc.weightx = 1;"
+					+ "\n\t  gbc.weighty = 1;"); 
 					constraints(tm);
 		output.format("\n\t}"
 					+ "\n\n\tstatic public void main(String[] args) {" 
-					+ "\n\t  JFrame frame = new JFrame(\"Simple Stuff\");"
+					+ "\n\t  JFrame frame = new JFrame(\"GridBagLayout\");"
 					+ "\n\t  "+file.returnPathName()+" panel = new "+file.returnPathName()+"();" 
 					+ "\n\t  frame.add(panel, BorderLayout.CENTER);"
 					+ "\n\t  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);" 
@@ -120,10 +122,10 @@ public class CodeGenerator {
 				output.format("\n\tJLabel "+tm.getValueAt(i, 1)+" = new JLabel (\""+tm.getValueAt(i, 2)+"\");");
 			}
 			if (TYPE[1] == TYPE[(int) tm.getValueAt(i, 0)]) {
-				output.format("\n\tJTextField "+tm.getValueAt(i, 1)+" = new JTextField (\""+tm.getValueAt(i, 2)+"\");");
+				output.format("\n\tJTextField "+tm.getValueAt(i, 1)+" = new JTextField (\""+tm.getValueAt(i, 2)+"\", "+tm.getValueAt(i, 10)+");");
 			}
 			if (TYPE[2] == TYPE[(int) tm.getValueAt(i, 0)]) {
-				output.format("\n\tJTextArea "+tm.getValueAt(i, 1)+" = new JTextArea (\""+tm.getValueAt(i, 2)+"\");");
+				output.format("\n\tJTextArea "+tm.getValueAt(i, 1)+" = new JTextArea (\""+tm.getValueAt(i, 2)+"\", " +tm.getValueAt(i, 9)+"," +tm.getValueAt(i, 10)+ ");");
 			}
 			if (TYPE[3] == TYPE[(int) tm.getValueAt(i, 0)]) {
 				output.format("\n\tJButton "+tm.getValueAt(i, 1)+" = new JButton (\""+tm.getValueAt(i, 2)+"\");");
