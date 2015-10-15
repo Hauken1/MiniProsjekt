@@ -88,7 +88,7 @@ public class GridBagFrame extends JFrame
 	    
 	    bar.add(menuItems.returnFileMenu(tableModel));
 	    bar.add(menuItems.returnRedigerMenu(tableModel));
-	    bar.add(menuItems.returnHjelpMenu());
+	    bar.add(menuItems.returnHjelpMenu(getParent()));
 	   
 	    constraints.weighty = 1;
 	    constraints.weightx = 1;

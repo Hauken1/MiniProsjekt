@@ -1,6 +1,10 @@
+import java.awt.Container;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.print.attribute.standard.JobHoldUntil;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -166,7 +170,22 @@ public class MenuItems {
 	 * Makes the drop down for hjelpMenu
 	 * @return hjelpMenu
 	 */
-	public JMenu returnHjelpMenu() {
+	public JMenu returnHjelpMenu(Container frame) {
+		
+		JMenuItem hjelpItem = new JMenuItem(inter.returnMessage("help")); // lage avslutt item
+	    hjelpItem.setMnemonic('n'); // set mnemonic to x
+	    hjelpMenu.add(hjelpItem);
+	    hjelpItem.addActionListener(
+	    	new ActionListener() // anonymous inner class
+	         {
+	            @Override
+	            public void actionPerformed(ActionEvent event)
+	            {
+	               JOptionPane.showMessageDialog(frame , inter.returnMessage("helpText"));
+	            } 
+	         }
+	    );
+		
 		return hjelpMenu;
 	}
 }

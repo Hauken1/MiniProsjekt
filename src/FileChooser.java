@@ -91,10 +91,10 @@ public class FileChooser extends JFrame {
 	 * @return file name without .extension
 	 */
 	public String returnPathName() {
-		String t;
+		String temp;
 		if(!pathNotFound()) {
-			t = fileChooser.getSelectedFile().getName();
-			return t.substring(0, t.indexOf("."));
+			temp = fileChooser.getSelectedFile().getName();
+			return temp.substring(0, temp.indexOf("."));
 		}
 		return "temp";
 	}
