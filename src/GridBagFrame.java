@@ -24,7 +24,7 @@ public class GridBagFrame extends JFrame
 	
 	JToolBar jtoolBar = new JToolBar(); 
 	
-	/*
+	/**
 	 * Constructor that gets called in the Main function. Creates the layout
 	 * Initializes class calls
 	 * Set constraints on GUI bar, toolbar and table.
