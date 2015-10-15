@@ -69,7 +69,7 @@ class TableModel extends AbstractTableModel {
 		data.add(new Komponent("Rad " + data.size(), "Temp", 1, 1, 1, 1));
 		fireTableRowsInserted(data.size() - 1 , data.size() - 1);
 		} catch (Exception c2) {
-			System.out.println("Feil ved innsetting av ny rad");
+			System.out.println(inter.returnMessage("feil"));
 		}
 	}
 	/**

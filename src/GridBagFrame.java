@@ -86,7 +86,6 @@ public class GridBagFrame extends JFrame
         };
 		toolBar.getHent().addActionListener(actionHent);
 		
-		
 		//Lagre funksjonalitet
 		ActionListener actionLagre = new ActionListener(){
 
