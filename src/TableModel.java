@@ -3,6 +3,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -56,7 +57,7 @@ class TableModel extends AbstractTableModel {
 		
 		public void setValueAt(Object object, int n, int n2) {
 	
-			((Komponent)this.data.elementAt(n)).setKolonne(n2, object);
+			((Komponent)data.elementAt(n)).setKolonne(n2, object);
 			fireTableCellUpdated(n, n2);
 		}
 		
@@ -109,9 +110,9 @@ class TableModel extends AbstractTableModel {
 			}
 		}
 		
-		public void popupEditor(Container editor, int n) {
-			 
-			
-		}
-		
+		public void popupEditor(int n1, int n2, int n3, int n4, int radnr) {
+			Komponent komponent = data.elementAt(radnr);
+			komponent.egenskapsEditor(n1, n2, n3, n4);
+			fireTableRowsUpdated(radnr, radnr);
+		}		
 }

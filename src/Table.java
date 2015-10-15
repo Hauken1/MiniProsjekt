@@ -10,15 +10,19 @@ import java.awt.event.MouseListener;
 import java.io.Serializable;
 import java.text.NumberFormat;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.text.NumberFormatter;
 
@@ -78,38 +82,70 @@ public class Table extends JPanel {
       	editor.addActionListener(new ActionListener() {
       		public void actionPerformed(ActionEvent e) {
       			int t;
+      			int n1 = 0;
+      			int n2 = 0;
+      			int n3 = 0;
+      			int n4 = 0;
+      			int svar;
+      			
       			t = (int) tableModel.getValueAt(table.getSelectedRow(),0);
       			if (t == 1 || t == 2) {		//sjekker om det er JTextField eller JTextArea
       			
-      			NumberFormat format = NumberFormat.getInstance(); 
-      			NumberFormatter formatter = new NumberFormatter(format);
-      			formatter.setValueClass(Integer.class);
-      			formatter.setMinimum(0);
-      			formatter.setMaximum(150);
-      			formatter.setCommitsOnValidEdit(true);
-      			
-      			JFormattedTextField felt1 = new JFormattedTextField(formatter);
-      			JFormattedTextField felt2 = new JFormattedTextField(formatter);
-      			JFormattedTextField felt3 = new JFormattedTextField(formatter);
-      			JFormattedTextField felt4 = new JFormattedTextField(formatter);
-      			
-      			Object[] felter = {
-      				"Felt1", felt1,
-      				"Felt2", felt2,
-      				"Felt3", felt3
-      			};
-      			JOptionPane.showConfirmDialog(null, felter, "Velg attributter", JOptionPane.OK_CANCEL_OPTION);
-      				/*
-      			JOptionPane pane = new JOptionPane(getParent());
-      			pane.setMessage("Heisann");
-      			pane.isShowing();
-      			//TODO DialogDemo eksempel 
-      			Container popupRamme = new JOptionPane();
-      			popupRamme = popupRamme.getParent();
-      			tableModel.popupEditor(popupRamme, table.getSelectedRow());
-      			*/
+      				JTextField rader = new JTextField(10);
+  					JTextField kolonner = new JTextField(10);
+  					JTextField bredde = new JTextField(10);
+  					JTextField hoyde = new JTextField(10);
       				
+      				if ( t == 1) {		//JtextField
+      					
+      					JPanel editorPanel = new JPanel();
+      					editorPanel.add(new JLabel("Antall rader:"));
+      					editorPanel.add(rader);
+      					editorPanel.add(new JLabel("Antall kolonner:"));
+      					editorPanel.add(kolonner);
+      					editorPanel.add(new JLabel("Angi hoyde:"));
+      					editorPanel.add(hoyde);
+      					editorPanel.add(new JLabel("Angi Bredde:"));
+      					editorPanel.add(bredde);
+      					editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.Y_AXIS));
+      					
+      					svar = JOptionPane.showConfirmDialog(null, editorPanel, "Skriv inn attributter for valgt JTextField", JOptionPane.OK_CANCEL_OPTION);
+      					
+      					if (svar == JOptionPane.OK_OPTION) {
+          					
+      						String textRader = rader.getText();
+      						String textKolonner = kolonner.getText();
+      						String textHoyde = hoyde.getText();
+      						String textBredde = bredde.getText();
+      						
+      						n1 = Integer.parseInt(textRader);
+      						n2 = Integer.parseInt(textKolonner);
+      						n3 = Integer.parseInt(textHoyde);
+      						n4 = Integer.parseInt(textBredde);
+      						tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
+      					}
+      				}
       				
+      				if ( t == 2) {	//Hvis det er et JTextArea
+      				
+      					JPanel editorPanel = new JPanel();
+      					editorPanel.add(new JLabel("Antall rader:"));
+      					editorPanel.add(rader);
+      					editorPanel.add(new JLabel("Antall kolonner:"));
+      					editorPanel.add(kolonner);
+      					editorPanel.setLayout(new BoxLayout(editorPanel, BoxLayout.Y_AXIS));
+      				
+      					svar = JOptionPane.showConfirmDialog(null, editorPanel, "Skriv inn attributter for valgt JTextArea", JOptionPane.OK_CANCEL_OPTION);
+      				
+      					if (svar == JOptionPane.OK_OPTION) {
+      					
+      						String textRader = rader.getText();
+      						String textKolonner = kolonner.getText();
+      						n1 = Integer.parseInt(textRader);
+      						n2 = Integer.parseInt(textKolonner);
+      						tableModel.popupEditor(n1, n2 , n3, n4, table.getSelectedRow());
+      					} 
+      				}	
       			} else {
       			JOptionPane.showMessageDialog(getParent(), 
            				"Type må være satt til JTextField eller JTextArea");
@@ -150,6 +186,6 @@ public class Table extends JPanel {
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		}
-		}
+	}
 	 
 }
